@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — Fulfilment International Academy</title>
+  <meta name="description" content="Sign in to the Fulfilment International Academy staff portal to manage student records." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ─── Login Page Extra Styles ─── */
+    .login-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .login-wrap {
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .login-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px;
+      justify-content: center;
+    }
+
+    .login-brand-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.05rem;
+      line-height: 1.2;
+    }
+
+    .login-brand-sub {
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .login-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .login-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .login-tab {
+      flex: 1;
+      padding: 18px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .login-tab::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 2px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transition: var(--transition);
+    }
+
+    .login-tab.active {
+      color: var(--white);
+      background: rgba(79,142,247,0.06);
+    }
+
+    .login-tab.active::after { transform: scaleX(1); }
+
+    .login-body { padding: 36px; }
+
+    .login-title {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .login-subtitle {
+      color: var(--text-muted);
+      font-size: 0.87rem;
+      margin-bottom: 28px;
+    }
+
+    .pw-wrap {
+      position: relative;
+    }
+
+    .pw-wrap .form-control { padding-right: 44px; }
+
+    .toggle-pw {
+      position: absolute;
+      right: 12px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none;
+      font-size: 1rem; cursor: pointer;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .toggle-pw:hover { color: var(--white); }
+
+    .login-error {
+      font-size: 0.83rem;
+      color: var(--danger);
+      margin-top: 12px;
+      min-height: 20px;
+      line-height: 1.4;
+    }
+
+    .login-footer {
+      padding: 20px 36px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: var(--white);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    .form-group-login { margin-bottom: 18px; }
+    .form-group-login:last-of-type { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="login-page">
+    <div class="login-wrap">
+
+      <!-- Brand -->
+      <div class="login-brand">
+        <div class="nav-logo" style="width:48px;height:48px;font-size:20px">FIA</div>
+        <div>
+          <div class="login-brand-title">Fulfilment Int'l Academy</div>
+          <div class="login-brand-sub">Staff Portal</div>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="login-card">
+        <!-- Tabs -->
+        <div class="login-tabs">
+          <button class="login-tab active" id="tabSignIn">🔐 Sign In</button>
+          <button class="login-tab" id="tabSignUp">✏️ Create Account</button>
+        </div>
+
+        <div class="login-body">
+
+          <!-- ── SIGN IN FORM ── -->
+          <form id="signInForm" novalidate>
+            <div class="login-title">Welcome back</div>
+            <div class="login-subtitle">Sign in to manage student records.</div>
+
+            <div class="form-group form-group-login">
+              <label for="signInEmail">Email Address</label>
+              <input type="email" id="signInEmail" class="form-control" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+
+            <div class="form-group form-group-login">
+              <label for="signInPassword">Password</label>
+              <div class="pw-wrap">
+                <input type="password" id="signInPassword" class="form-control" placeholder="Your password" autocomplete="current-password" required />
+                <button type="button" class="toggle-pw" data-target="signInPassword">👁️</button>
+              </div>
+            </div>
+
+            <button type="submit" id="signInBtn" class="btn btn-primary" style="width:100%;margin-top:8px">
+              🔐 Sign In
+            </button>
+            <div class="login-error" id="signInError"></div>
+          </form>
+
+          <!-- ── SIGN UP FORM ── -->
+          <form id="signUpForm" style="display:none" novalidate>
+            <div class="login-title">Create Staff Account</div>
+            <div class="login-subtitle">Register as an academy staff member to access student records.</div>
+
+            <div class="form-group form-group-login">
+              <label for="signUpName">Full Name</label>
+              <input type="text" id="signUpName" class="form-control" placeholder="Your full name" required />
+            </div>
+
+            <div class="form-group form-group-login">
+              <label for="signUpEmail">Email Address</label>
+              <input type="email" id="signUpEmail" class="form-control" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+
+            <div class="form-group form-group-login">
+              <label for="signUpPassword">Password</label>
+              <div class="pw-wrap">
+                <input type="password" id="signUpPassword" class="form-control" placeholder="Min. 6 characters" required />
+                <button type="button" class="toggle-pw" data-target="signUpPassword">👁️</button>
+              </div>
+            </div>
+
+            <div class="form-group form-group-login">
+              <label for="signUpConfirm">Confirm Password</label>
+              <div class="pw-wrap">
+                <input type="password" id="signUpConfirm" class="form-control" placeholder="Repeat password" required />
+                <button type="button" class="toggle-pw" data-target="signUpConfirm">🙈</button>
+              </div>
+            </div>
+
+            <button type="submit" id="signUpBtn" class="btn btn-gold" style="width:100%;margin-top:8px">
+              ✅ Create Account
+            </button>
+            <div class="login-error" id="signUpError"></div>
+          </form>
+
+        </div>
+
+        <div class="login-footer">
+          🔒 Secure staff access only &nbsp;·&nbsp; Fulfilment International Academy © 2026
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:20px;font-size:0.82rem;color:var(--text-muted)">
+        <a href="landing.html" style="color:var(--blue-light)">← Back to Public Site</a>
+      </p>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/app.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

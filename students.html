@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Students — Fulfilment International Academy</title>
+  <meta name="description" content="View, search, edit, and manage all enrolled students at Fulfilment International Academy." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">
+      <div class="nav-logo">FIA</div>
+      <div class="nav-title">
+        Fulfilment Int'l Academy
+        <span>Shaping Tomorrow's Leaders</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="students.html" class="active">Students</a>
+      <a href="register.html">Register</a>
+      <a href="login.html" id="navSignIn" class="nav-cta btn" style="display:none">🔐 Sign In</a>
+      <button id="navSignOut" class="nav-cta btn" style="display:none" onclick="signOut()">👋 Sign Out</button>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── PAGE CONTENT ─── -->
+  <div class="students-layout">
+    <div class="page-header">
+      <div class="section-label">Student Registry</div>
+      <h1>All <span>Enrolled Students</span></h1>
+      <p>Search, filter, view, edit, or remove student records with ease. Updates in real time.</p>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="form-control" placeholder="Search by name, ID, email, or course…" />
+        </div>
+        <select id="courseFilter" class="form-control" style="max-width:200px">
+          <option value="">All Courses</option>
+        </select>
+        <select id="statusFilter" class="form-control" style="max-width:140px">
+          <option value="">All Statuses</option>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+          <option value="Graduated">Graduated</option>
+        </select>
+        <div class="student-count-badge" id="studentCount">Loading…</div>
+      </div>
+      <div class="toolbar-right">
+        <div class="view-toggle">
+          <button class="vt-btn active" data-view="table" title="Table view">☰</button>
+          <button class="vt-btn" data-view="grid" title="Grid view">⊞</button>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇ Export CSV</button>
+        <a href="register.html" class="btn btn-primary btn-sm">+ Enrol Student</a>
+      </div>
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="empty-state glass" style="display:none">
+      <div class="empty-icon">🎓</div>
+      <h3>No Students Yet</h3>
+      <p>No student records found. Start by enrolling your first student or adjust your search filters.</p>
+      <a href="register.html" class="btn btn-primary" style="margin-top:8px">+ Enrol First Student</a>
+    </div>
+
+    <!-- TABLE VIEW -->
+    <div id="tableView" class="students-table-wrap" style="display:none">
+      <table class="students-table">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Student ID</th>
+            <th>Course</th>
+            <th>Phone</th>
+            <th>Enrolled</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="studentsTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- GRID VIEW -->
+    <div id="studentsGrid" class="students-grid" style="display:none"></div>
+
+    <!-- Live indicator -->
+    <div style="margin-top:16px;display:flex;align-items:center;gap:8px;color:var(--text-muted);font-size:0.8rem">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--success);display:inline-block;animation:pulse 1.5s infinite"></span>
+      Live updates enabled — changes appear automatically
+    </div>
+  </div>
+
+  <!-- ══ PROFILE MODAL ══ -->
+  <div class="modal-overlay" id="profileModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title">👤 Student Profile</div>
+        <button class="modal-close" onclick="closeModal('profileModal')">✕</button>
+      </div>
+      <div class="modal-body" id="profileContent"></div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('profileModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ EDIT MODAL ══ -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title">✏️ Edit Student Record</div>
+        <button class="modal-close" onclick="closeModal('editModal')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid form-grid-2" style="gap:18px">
+          <div class="form-group"><label for="editFirstName">First Name <span class="required">*</span></label><input type="text" id="editFirstName" class="form-control" /></div>
+          <div class="form-group"><label for="editLastName">Last Name <span class="required">*</span></label><input type="text" id="editLastName" class="form-control" /></div>
+          <div class="form-group"><label for="editEmail">Email <span class="required">*</span></label><input type="email" id="editEmail" class="form-control" /></div>
+          <div class="form-group"><label for="editPhone">Phone</label><input type="tel" id="editPhone" class="form-control" /></div>
+          <div class="form-group"><label for="editDob">Date of Birth</label><input type="date" id="editDob" class="form-control" /></div>
+          <div class="form-group">
+            <label for="editGender">Gender</label>
+            <select id="editGender" class="form-control">
+              <option value="">Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="editCourse">Course <span class="required">*</span></label><select id="editCourse" class="form-control"><option value="">Select course</option></select></div>
+          <div class="form-group">
+            <label for="editStatus">Status</label>
+            <select id="editStatus" class="form-control">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+              <option value="Graduated">Graduated</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="editNationality">Nationality</label><input type="text" id="editNationality" class="form-control" /></div>
+          <div class="form-group"><label for="editAddress">Address</label><input type="text" id="editAddress" class="form-control" /></div>
+          <div class="form-group" style="grid-column:1/-1"><label for="editNotes">Notes</label><textarea id="editNotes" class="form-control" rows="2"></textarea></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('editModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveEdit()">💾 Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ DELETE MODAL ══ -->
+  <div class="modal-overlay" id="deleteModal">
+    <div class="modal-box modal-sm">
+      <div class="modal-body" style="text-align:center;padding:40px 28px">
+        <div class="confirm-icon">⚠️</div>
+        <h3 style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:10px">Delete Student?</h3>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:8px">
+          You are about to permanently delete <strong id="deleteStudentName"></strong>.
+        </p>
+        <p style="color:var(--danger);font-size:0.82rem">This action cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal('deleteModal')">Cancel</button>
+        <button class="btn btn-danger" onclick="doDelete()">🗑 Delete Permanently</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="footer-brand"><div class="nav-logo">FIA</div>Fulfilment International Academy</div>
+    <p>© 2026 Fulfilment International Academy. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="students.html">Students</a>
+      <a href="register.html">Register</a>
+    </div>
+  </footer>
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/app.js"></script>
+  <script src="js/students.js"></script>
+</body>
+</html>

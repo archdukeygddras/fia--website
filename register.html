@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enrol Student — Fulfilment International Academy</title>
+  <meta name="description" content="Register a new student at Fulfilment International Academy." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">
+      <div class="nav-logo">FIA</div>
+      <div class="nav-title">
+        Fulfilment Int'l Academy
+        <span>Shaping Tomorrow's Leaders</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="students.html">Students</a>
+      <a href="register.html" class="active">Register</a>
+      <a href="login.html" id="navSignIn" class="nav-cta btn" style="display:none">🔐 Sign In</a>
+      <button id="navSignOut" class="nav-cta btn" style="display:none" onclick="signOut()">👋 Sign Out</button>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── PAGE CONTENT ─── -->
+  <div class="register-layout">
+    <div class="page-header">
+      <div class="section-label">New Enrolment</div>
+      <h1>Register a <span>New Student</span></h1>
+      <p>Complete the form below. A unique Student ID is auto-generated and saved to the cloud instantly.</p>
+    </div>
+
+    <div class="register-grid">
+      <!-- FORM CARD -->
+      <div class="register-form-card">
+        <!-- Success overlay -->
+        <div class="success-overlay" id="successOverlay">
+          <div class="success-icon-wrap">✅</div>
+          <h3>Student Enrolled!</h3>
+          <p>
+            <strong id="successName"></strong> has been successfully registered.<br>
+            Student ID: <strong id="successId" style="color:var(--blue-light)"></strong>
+          </p>
+          <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;justify-content:center">
+            <a href="students.html" class="btn btn-primary">📋 View All Students</a>
+            <button class="btn btn-outline" onclick="resetForm()">+ Enrol Another</button>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div id="formCard">
+          <div class="register-form-title">📝 Student Enrolment Form</div>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+          <form id="registerForm" novalidate>
+            <!-- PERSONAL -->
+            <div class="form-section">
+              <div class="form-section-title">👤 Personal Details</div>
+              <div class="form-grid form-grid-2">
+                <div class="form-group">
+                  <label for="firstName">First Name <span class="required">*</span></label>
+                  <input type="text" id="firstName" class="form-control" placeholder="e.g. John" required autocomplete="off" />
+                  <span class="error-msg">First name is required.</span>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name <span class="required">*</span></label>
+                  <input type="text" id="lastName" class="form-control" placeholder="e.g. Osei" required autocomplete="off" />
+                  <span class="error-msg">Last name is required.</span>
+                </div>
+                <div class="form-group">
+                  <label for="dob">Date of Birth <span class="required">*</span></label>
+                  <input type="date" id="dob" class="form-control" required />
+                  <span class="error-msg">Enter a valid date of birth.</span>
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender <span class="required">*</span></label>
+                  <select id="gender" class="form-control" required>
+                    <option value="">Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                  </select>
+                  <span class="error-msg">Please select a gender.</span>
+                </div>
+                <div class="form-group">
+                  <label for="nationality">Nationality</label>
+                  <input type="text" id="nationality" class="form-control" placeholder="e.g. Ghanaian" />
+                </div>
+              </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div class="form-section">
+              <div class="form-section-title">📞 Contact Information</div>
+              <div class="form-grid form-grid-2">
+                <div class="form-group">
+                  <label for="email">Email Address <span class="required">*</span></label>
+                  <input type="email" id="email" class="form-control" placeholder="student@example.com" required autocomplete="off" />
+                  <span class="error-msg">Enter a valid email address.</span>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number <span class="required">*</span></label>
+                  <input type="tel" id="phone" class="form-control" placeholder="+1 234 567 8900" required />
+                  <span class="error-msg">Enter a valid phone number.</span>
+                </div>
+                <div class="form-group" style="grid-column:1/-1">
+                  <label for="address">Home Address</label>
+                  <input type="text" id="address" class="form-control" placeholder="Street address, City, Country" />
+                </div>
+              </div>
+            </div>
+
+            <!-- ACADEMIC -->
+            <div class="form-section">
+              <div class="form-section-title">🎓 Academic Information</div>
+              <div class="form-grid form-grid-2">
+                <div class="form-group" style="grid-column:1/-1">
+                  <label for="course">Course / Programme <span class="required">*</span></label>
+                  <select id="course" class="form-control" required>
+                    <option value="">Select a programme…</option>
+                  </select>
+                  <span class="error-msg">Please select a course.</span>
+                </div>
+                <div class="form-group" style="grid-column:1/-1">
+                  <label for="notes">Additional Notes</label>
+                  <textarea id="notes" class="form-control" rows="3" placeholder="Any additional information…"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-outline" onclick="document.getElementById('registerForm').reset()">🔄 Reset</button>
+              <button type="submit" class="btn btn-primary btn-lg">✅ Register Student</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="register-sidebar">
+        <div class="student-id-card">
+          <h4>Auto-Generated Student ID</h4>
+          <div class="student-id-val" id="generatedId">Loading…</div>
+          <p style="font-size:0.78rem;color:var(--white-40);margin-top:10px">This ID will be assigned on registration.</p>
+        </div>
+        <div class="tips-card">
+          <h4>💡 Helpful Tips</h4>
+          <ul>
+            <li>Fields marked <strong style="color:var(--danger)">*</strong> are required.</li>
+            <li>Student ID is auto-generated — don't enter it manually.</li>
+            <li>Data is saved to the secure Supabase cloud database.</li>
+            <li>Edit any record from the Students page after save.</li>
+          </ul>
+        </div>
+        <div class="tips-card">
+          <h4>📊 Current Stats</h4>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:0.85rem;color:var(--text-muted)">Total Students</span>
+              <span id="sidebarCount" style="font-family:var(--font-head);font-size:1.1rem;font-weight:800;color:var(--blue-light)">—</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:0.85rem;color:var(--text-muted)">Programmes</span>
+              <span style="font-family:var(--font-head);font-size:1.1rem;font-weight:800;color:var(--gold)">14</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="footer-brand"><div class="nav-logo">FIA</div>Fulfilment International Academy</div>
+    <p>© 2026 Fulfilment International Academy. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="students.html">Students</a>
+      <a href="register.html">Register</a>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/app.js"></script>
+  <script src="js/register.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Sidebar live count
+      const { count } = await db.from('students').select('*', { count: 'exact', head: true });
+      document.getElementById('sidebarCount').textContent = count || 0;
+
+      // Progress bar
+      const formFields = document.querySelectorAll('#registerForm .form-control');
+      function updateProgress() {
+        const filled = Array.from(formFields).filter(f => f.value.trim()).length;
+        document.getElementById('progressFill').style.width = Math.round((filled / formFields.length) * 100) + '%';
+      }
+      formFields.forEach(f => f.addEventListener('input', updateProgress));
+      formFields.forEach(f => f.addEventListener('change', updateProgress));
+    });
+  </script>
+</body>
+</html>

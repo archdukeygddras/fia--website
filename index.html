@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fulfilment International Academy — Excellence in Education</title>
+  <meta name="description" content="Fulfilment International Academy — A premier institution for higher education. Manage student records, registrations, and academic programs all in one place." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav class="navbar">
+    <a class="nav-brand" href="index.html">
+      <div class="nav-logo">FIA</div>
+      <div class="nav-title">
+        Fulfilment Int'l Academy
+        <span>Shaping Tomorrow's Leaders</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="students.html">Students</a>
+      <a href="register.html">Register</a>
+      <a href="landing.html" style="color:var(--gold)">🌐 Public Site</a>
+      <a href="login.html" id="navSignIn" class="nav-cta btn" style="display:none">🔐 Sign In</a>
+      <button id="navSignOut" class="nav-cta btn" style="display:none" onclick="signOut()">👋 Sign Out</button>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-pill">🎓 Accredited International Institution</div>
+        <h1>
+          <span class="line1">Empowering Students,</span>
+          <span class="line2">Transforming Futures</span>
+        </h1>
+        <p>Fulfilment International Academy provides world-class education, cutting-edge programs, and a fully digital student management system — all in one place.</p>
+        <div class="hero-btns">
+          <a href="register.html" class="btn btn-primary btn-lg">📝 Enrol a Student</a>
+          <a href="students.html" class="btn btn-outline btn-lg">📋 View Students</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num"><span id="heroStatStudents">0</span>+</div>
+            <div class="hero-stat-label">Students Enrolled</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">14</div>
+            <div class="hero-stat-label">Programmes Offered</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">98<span>%</span></div>
+            <div class="hero-stat-label">Satisfaction Rate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="hero-card-bg c1"></div>
+          <div class="hero-card-bg c2"></div>
+          <div class="hero-main-card">
+            <div class="hero-card-avatar">👤</div>
+            <div class="hero-card-name">Sample Student</div>
+            <div class="hero-card-course">Computer Science</div>
+            <div class="hero-card-bar">
+              <div class="hero-card-bar-fill"></div>
+            </div>
+            <div class="hero-card-bar-label">
+              <span>Progress</span><span>72%</span>
+            </div>
+          </div>
+          <div class="floating-badge fb1">✅ Enrolled &amp; Active</div>
+          <div class="floating-badge fb2">🏆 High Achiever</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURES ─── -->
+  <section class="features">
+    <div class="container">
+      <div class="features-header">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Everything You Need to <span class="highlight">Manage Your Academy</span></h2>
+        <p class="section-desc" style="margin:0 auto;">From student enrolment to full data management — Fulfilment International Academy puts everything at your fingertips.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon fi-blue">📋</div>
+          <h3>Student Registry</h3>
+          <p>Maintain a comprehensive, searchable database of all enrolled students with full profile details, course information, and contact records.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon fi-gold">✏️</div>
+          <h3>Quick Registration</h3>
+          <p>Enrol new students in seconds with our smart form. Auto-generates a unique Student ID and validates all data in real time.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon fi-green">⚡</div>
+          <h3>Real-Time Updates</h3>
+          <p>Powered by Supabase — student records update live across all devices instantly. No refresh needed.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon fi-blue">🔐</div>
+          <h3>Secure Staff Login</h3>
+          <p>Protected by Supabase Auth. Only authorised academy staff can access student data — fully encrypted and secure.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon fi-gold">🔍</div>
+          <h3>Smart Search & Filter</h3>
+          <p>Instantly find any student by name, ID, or course. Advanced filters help you navigate hundreds of records effortlessly.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon fi-green">📊</div>
+          <h3>Cloud Storage</h3>
+          <p>All data stored in a secure PostgreSQL cloud database — accessible from any device, any browser, anywhere in the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATS BAND ─── -->
+  <section class="stats-band">
+    <div class="container">
+      <div class="stats-band-inner">
+        <div class="stat-item reveal">
+          <div class="num" id="statStudents">0</div>
+          <div class="lbl">Students Managed</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="num">14</div>
+          <div class="lbl">Academic Programmes</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="num">☁️</div>
+          <div class="lbl">Cloud-Powered Database</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="num">24/7</div>
+          <div class="lbl">Always Available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <h2>Ready to Enrol Your First Student?</h2>
+        <p>It takes less than 60 seconds. Sign in, fill in the form, and the student is instantly in the cloud database.</p>
+        <div class="cta-btns">
+          <a href="register.html" class="btn btn-gold btn-lg">📝 Register a Student</a>
+          <a href="students.html" class="btn btn-outline btn-lg">View Student List →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="nav-logo">FIA</div>
+      Fulfilment International Academy
+    </div>
+    <p>© 2026 Fulfilment International Academy. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="landing.html">🌐 Public Site</a>
+      <a href="index.html">Home</a>
+      <a href="students.html">Students</a>
+      <a href="login.html">Staff Login</a>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Live student count from Supabase
+      const { count } = await db.from('students').select('*', { count: 'exact', head: true });
+      const total = count || 0;
+      animateCount(document.getElementById('heroStatStudents'), total);
+      animateCount(document.getElementById('statStudents'), total);
+    });
+  </script>
+</body>
+</html>
