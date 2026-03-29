@@ -3,136 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Students — Fulfilment International Academy</title>
+  <title>Students Registry | Fulfilment International Academy</title>
   <meta name="description" content="View, search, edit, and manage all enrolled students at Fulfilment International Academy." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200..800&display=swap" rel="stylesheet" />
+  <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
 
-  <!-- ─── NAVBAR ─── -->
-  <nav class="navbar">
-    <a class="nav-brand" href="index.html">
-      <div class="nav-logo">FIA</div>
-      <div class="nav-title">
-        Fulfilment Int'l Academy
-        <span>Shaping Tomorrow's Leaders</span>
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+          <span class="material-symbols-outlined text-sm">school</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-bold tracking-tight leading-none">FIA</span>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-6 font-medium text-sm">
+        <a class="hover:text-primary transition-colors" href="index.html">Dashboard</a>
+        <a class="text-primary font-bold border-b-2 border-primary pb-1" href="students.html">Students</a>
+        <a class="hover:text-primary transition-colors" href="register.html">Register</a>
+        
+        <a href="login.html" id="navSignIn" class="flex items-center gap-1 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors hidden">
+          <span class="material-symbols-outlined text-[18px]">login</span> Sign In
+        </a>
+        <button id="navSignOut" class="flex items-center gap-1 text-slate-600 dark:text-slate-400 hover:text-red-500 transition-colors hidden cursor-pointer" onclick="signOut()">
+          <span class="material-symbols-outlined text-[18px]">logout</span> Sign Out
+        </button>
       </div>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="students.html" class="active">Students</a>
-      <a href="register.html">Register</a>
-      <a href="login.html" id="navSignIn" class="nav-cta btn" style="display:none">🔐 Sign In</a>
-      <button id="navSignOut" class="nav-cta btn" style="display:none" onclick="signOut()">👋 Sign Out</button>
     </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
-  <!-- ─── PAGE CONTENT ─── -->
-  <div class="students-layout">
-    <div class="page-header">
-      <div class="section-label">Student Registry</div>
-      <h1>All <span>Enrolled Students</span></h1>
-      <p>Search, filter, view, edit, or remove student records with ease. Updates in real time.</p>
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col items-center py-10 px-4 max-w-7xl mx-auto w-full gap-6">
+    
+    <!-- Page Header -->
+    <div class="w-full flex-col md:flex-row flex justify-between items-end gap-4 border-b border-primary/10 pb-6">
+      <div class="flex flex-col gap-1 w-full md:w-auto">
+        <span class="text-primary font-bold tracking-widest uppercase text-xs">Student Registry</span>
+        <h1 class="text-3xl md:text-4xl font-black">All <span class="text-primary italic">Enrolled Students</span></h1>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Search, filter, view, edit, or remove student records with ease.</p>
+      </div>
+      
+      <div class="flex items-center gap-3 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 shrink-0">
+         <div id="liveSyncIndicator" class="flex items-center gap-1 text-xs font-bold text-green-600 bg-green-100 dark:bg-green-900/30 px-3 py-1.5 rounded-full whitespace-nowrap border border-green-200 dark:border-green-800 mr-2">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Live Sync Active
+         </div>
+         <button onclick="exportCSV()" class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-sm py-2 px-4 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-1 shadow-sm whitespace-nowrap">
+           <span class="material-symbols-outlined text-[18px]">download</span> Export CSV
+         </button>
+         <a href="register.html" class="bg-primary hover:bg-primary/90 text-white font-bold text-sm py-2 px-4 rounded-lg transition-colors shadow-md shadow-primary/20 flex items-center gap-1 whitespace-nowrap">
+           <span class="material-symbols-outlined text-[18px]">add</span> Enrol Student
+         </a>
+      </div>
     </div>
 
-    <!-- TOOLBAR -->
-    <div class="toolbar">
-      <div class="toolbar-left">
-        <div class="search-input-wrap">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="searchInput" class="form-control" placeholder="Search by name, ID, email, or course…" />
+    <!-- Toolbar -->
+    <div class="w-full bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-primary/10 p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+      
+      <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+        <div class="relative w-full md:w-64">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+          <input type="text" id="searchInput" class="w-full rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm pl-10 pr-4 py-2" placeholder="Search students..." />
         </div>
-        <select id="courseFilter" class="form-control" style="max-width:200px">
+        
+        <select id="courseFilter" class="w-full md:w-48 rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm py-2 px-3 font-sans">
           <option value="">All Courses</option>
         </select>
-        <select id="statusFilter" class="form-control" style="max-width:140px">
+        
+        <select id="statusFilter" class="w-full md:w-40 rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm py-2 px-3 font-sans">
           <option value="">All Statuses</option>
           <option value="Active">Active</option>
           <option value="Inactive">Inactive</option>
           <option value="Graduated">Graduated</option>
         </select>
-        <div class="student-count-badge" id="studentCount">Loading…</div>
       </div>
-      <div class="toolbar-right">
-        <div class="view-toggle">
-          <button class="vt-btn active" data-view="table" title="Table view">☰</button>
-          <button class="vt-btn" data-view="grid" title="Grid view">⊞</button>
+
+      <div class="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
+        <div class="text-sm font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-md" id="studentCount">
+          Loading...
         </div>
-        <button class="btn btn-outline btn-sm" onclick="exportCSV()">⬇ Export CSV</button>
-        <a href="register.html" class="btn btn-primary btn-sm">+ Enrol Student</a>
+        
+        <div class="flex bg-slate-100 dark:bg-slate-800 rounded-lg p-1 border border-slate-200 dark:border-slate-700">
+          <button class="vt-btn active w-8 h-8 rounded-md flex items-center justify-center text-primary bg-white dark:bg-slate-700 shadow-sm transition-all" data-view="table" title="Table view">
+            <span class="material-symbols-outlined text-[20px]">table_rows</span>
+          </button>
+          <button class="vt-btn w-8 h-8 rounded-md flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-all" data-view="grid" title="Grid view">
+            <span class="material-symbols-outlined text-[20px]">grid_view</span>
+          </button>
+        </div>
       </div>
+      
     </div>
 
-    <!-- EMPTY STATE -->
-    <div id="emptyState" class="empty-state glass" style="display:none">
-      <div class="empty-icon">🎓</div>
-      <h3>No Students Yet</h3>
-      <p>No student records found. Start by enrolling your first student or adjust your search filters.</p>
-      <a href="register.html" class="btn btn-primary" style="margin-top:8px">+ Enrol First Student</a>
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden w-full bg-white dark:bg-slate-900 rounded-2xl border border-primary/10 p-12 flex-col items-center justify-center text-center shadow-sm my-8">
+      <div class="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-4">
+        <span class="material-symbols-outlined text-4xl">school</span>
+      </div>
+      <h3 class="text-2xl font-black mb-2">No Students Found</h3>
+      <p class="text-slate-500 dark:text-slate-400 max-w-md mb-6">No student records match your current criteria. Start by enrolling your first student or adjust your search filters.</p>
+      <button onclick="document.getElementById('searchInput').value=''; document.getElementById('courseFilter').value=''; document.getElementById('statusFilter').value=''; document.getElementById('searchInput').dispatchEvent(new Event('input'));" class="text-primary font-bold hover:underline mb-4 text-sm">Clear Filters</button>
+      <a href="register.html" class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30 flex items-center gap-2">
+        <span class="material-symbols-outlined">add</span> Enrol First Student
+      </a>
     </div>
 
-    <!-- TABLE VIEW -->
-    <div id="tableView" class="students-table-wrap" style="display:none">
-      <table class="students-table">
-        <thead>
+    <!-- Table View -->
+    <div id="tableView" class="w-full bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-primary/10 overflow-hidden hidden table-container overflow-x-auto">
+      <table class="w-full text-left border-collapse text-sm">
+        <thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider border-b border-primary/10">
           <tr>
-            <th>Student</th>
-            <th>Student ID</th>
-            <th>Course</th>
-            <th>Phone</th>
-            <th>Enrolled</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th class="p-4 whitespace-nowrap">Student</th>
+            <th class="p-4 whitespace-nowrap">Student ID</th>
+            <th class="p-4 whitespace-nowrap">Course</th>
+            <th class="p-4 whitespace-nowrap">Phone</th>
+            <th class="p-4 whitespace-nowrap hidden md:table-cell">Enrolled Date</th>
+            <th class="p-4 whitespace-nowrap">Status</th>
+            <th class="p-4 whitespace-nowrap text-right">Actions</th>
           </tr>
         </thead>
-        <tbody id="studentsTableBody"></tbody>
+        <tbody id="studentsTableBody" class="divide-y divide-primary/5">
+          <!-- Rows injected by UI -->
+        </tbody>
       </table>
     </div>
 
-    <!-- GRID VIEW -->
-    <div id="studentsGrid" class="students-grid" style="display:none"></div>
-
-    <!-- Live indicator -->
-    <div style="margin-top:16px;display:flex;align-items:center;gap:8px;color:var(--text-muted);font-size:0.8rem">
-      <span style="width:8px;height:8px;border-radius:50%;background:var(--success);display:inline-block;animation:pulse 1.5s infinite"></span>
-      Live updates enabled — changes appear automatically
+    <!-- Grid View -->
+    <div id="studentsGrid" class="w-full hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+       <!-- Cards injected by UI -->
     </div>
-  </div>
 
-  <!-- ══ PROFILE MODAL ══ -->
+  </main>
+
+  <!-- Profile Modal -->
   <div class="modal-overlay" id="profileModal">
     <div class="modal-box">
-      <div class="modal-header">
-        <div class="modal-title">👤 Student Profile</div>
-        <button class="modal-close" onclick="closeModal('profileModal')">✕</button>
+      <div class="flex items-center justify-between p-6 border-b border-primary/10 bg-slate-50 dark:bg-slate-800/50">
+        <div class="text-xl font-black flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary">person_search</span> Student Profile
+        </div>
+        <button class="text-slate-400 hover:text-red-500 transition-colors bg-white dark:bg-slate-700 w-8 h-8 rounded-full flex items-center justify-center shadow-sm" onclick="closeModal('profileModal')">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
       </div>
-      <div class="modal-body" id="profileContent"></div>
-      <div class="modal-footer">
-        <button class="btn btn-outline" onclick="closeModal('profileModal')">Close</button>
+      <div class="p-6" id="profileContent">
+        <!-- Content injected dynamically -->
+      </div>
+      <div class="p-4 border-t border-primary/10 bg-slate-50 dark:bg-slate-800/50 flex justify-end">
+        <button class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold py-2 px-6 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors" onclick="closeModal('profileModal')">Close</button>
       </div>
     </div>
   </div>
 
-  <!-- ══ EDIT MODAL ══ -->
+  <!-- Edit Modal -->
   <div class="modal-overlay" id="editModal">
     <div class="modal-box">
-      <div class="modal-header">
-        <div class="modal-title">✏️ Edit Student Record</div>
-        <button class="modal-close" onclick="closeModal('editModal')">✕</button>
+      <div class="flex items-center justify-between p-6 border-b border-primary/10 bg-slate-50 dark:bg-slate-800/50">
+        <div class="text-xl font-black flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary">edit_square</span> Edit Student Record
+        </div>
+        <button class="text-slate-400 hover:text-red-500 transition-colors bg-white dark:bg-slate-700 w-8 h-8 rounded-full flex items-center justify-center shadow-sm" onclick="closeModal('editModal')">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
       </div>
-      <div class="modal-body">
-        <div class="form-grid form-grid-2" style="gap:18px">
-          <div class="form-group"><label for="editFirstName">First Name <span class="required">*</span></label><input type="text" id="editFirstName" class="form-control" /></div>
-          <div class="form-group"><label for="editLastName">Last Name <span class="required">*</span></label><input type="text" id="editLastName" class="form-control" /></div>
-          <div class="form-group"><label for="editEmail">Email <span class="required">*</span></label><input type="email" id="editEmail" class="form-control" /></div>
-          <div class="form-group"><label for="editPhone">Phone</label><input type="tel" id="editPhone" class="form-control" /></div>
-          <div class="form-group"><label for="editDob">Date of Birth</label><input type="date" id="editDob" class="form-control" /></div>
-          <div class="form-group">
-            <label for="editGender">Gender</label>
-            <select id="editGender" class="form-control">
+      <div class="p-6 max-h-[60vh] overflow-y-auto custom-scrollbar">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div><label class="block text-sm font-semibold mb-1">First Name <span class="text-red-500">*</span></label><input type="text" id="editFirstName" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5" /></div>
+          <div><label class="block text-sm font-semibold mb-1">Last Name <span class="text-red-500">*</span></label><input type="text" id="editLastName" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5" /></div>
+          <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1">Email <span class="text-red-500">*</span></label><input type="email" id="editEmail" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5" /></div>
+          <div><label class="block text-sm font-semibold mb-1">Phone</label><input type="tel" id="editPhone" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5" /></div>
+          <div><label class="block text-sm font-semibold mb-1">Date of Birth</label><input type="date" id="editDob" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5 font-sans" /></div>
+          <div>
+            <label class="block text-sm font-semibold mb-1">Gender</label>
+            <select id="editGender" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5 font-sans">
               <option value="">Select</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -140,61 +189,93 @@
               <option value="Prefer not to say">Prefer not to say</option>
             </select>
           </div>
-          <div class="form-group"><label for="editCourse">Course <span class="required">*</span></label><select id="editCourse" class="form-control"><option value="">Select course</option></select></div>
-          <div class="form-group">
-            <label for="editStatus">Status</label>
-            <select id="editStatus" class="form-control">
+          <div><label class="block text-sm font-semibold mb-1">Nationality</label><input type="text" id="editNationality" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5" /></div>
+          <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1">Course <span class="text-red-500">*</span></label><select id="editCourse" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5 font-sans"><option value="">Select course</option></select></div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-semibold mb-1">Status</label>
+            <select id="editStatus" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5 font-sans">
               <option value="Active">Active</option>
               <option value="Inactive">Inactive</option>
               <option value="Graduated">Graduated</option>
             </select>
           </div>
-          <div class="form-group"><label for="editNationality">Nationality</label><input type="text" id="editNationality" class="form-control" /></div>
-          <div class="form-group"><label for="editAddress">Address</label><input type="text" id="editAddress" class="form-control" /></div>
-          <div class="form-group" style="grid-column:1/-1"><label for="editNotes">Notes</label><textarea id="editNotes" class="form-control" rows="2"></textarea></div>
+          <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1">Address</label><input type="text" id="editAddress" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5" /></div>
+          <div class="md:col-span-2"><label class="block text-sm font-semibold mb-1">Notes</label><textarea id="editNotes" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-2.5 font-sans" rows="3"></textarea></div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline" onclick="closeModal('editModal')">Cancel</button>
-        <button class="btn btn-primary" onclick="saveEdit()">💾 Save Changes</button>
+      <div class="p-4 border-t border-primary/10 bg-slate-50 dark:bg-slate-800/50 flex justify-end gap-3">
+        <button class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold py-2 px-6 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors" onclick="closeModal('editModal')">Cancel</button>
+        <button class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-lg transition-colors shadow-md shadow-primary/20 flex items-center gap-2" onclick="saveEdit()">
+          <span class="material-symbols-outlined text-[18px]">save</span> Save Changes
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- ══ DELETE MODAL ══ -->
+  <!-- Delete Modal -->
   <div class="modal-overlay" id="deleteModal">
     <div class="modal-box modal-sm">
-      <div class="modal-body" style="text-align:center;padding:40px 28px">
-        <div class="confirm-icon">⚠️</div>
-        <h3 style="font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:10px">Delete Student?</h3>
-        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:8px">
-          You are about to permanently delete <strong id="deleteStudentName"></strong>.
+      <div class="p-8 text-center flex flex-col items-center">
+        <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4">
+          <span class="material-symbols-outlined text-3xl">warning</span>
+        </div>
+        <h3 class="text-2xl font-black mb-2">Delete Student?</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mb-4">
+          You are about to permanently delete <strong id="deleteStudentName" class="text-slate-900 dark:text-white"></strong>.
         </p>
-        <p style="color:var(--danger);font-size:0.82rem">This action cannot be undone.</p>
+        <div class="bg-red-50 border border-red-200 text-red-700 text-xs px-3 py-2 rounded-lg font-bold mb-6 w-full">
+          This action cannot be undone.
+        </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline" onclick="closeModal('deleteModal')">Cancel</button>
-        <button class="btn btn-danger" onclick="doDelete()">🗑 Delete Permanently</button>
+      <div class="p-4 border-t border-primary/10 bg-slate-50 dark:bg-slate-800/50 flex justify-center gap-3">
+        <button class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold py-2 px-6 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors" onclick="closeModal('deleteModal')">Cancel</button>
+        <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition-colors shadow-md shadow-red-600/20 flex items-center gap-2" onclick="doDelete()">
+          <span class="material-symbols-outlined text-[18px]">delete</span> Delete Permanently
+        </button>
       </div>
     </div>
   </div>
 
-  <div id="toast-container"></div>
-
-  <!-- ─── FOOTER ─── -->
-  <footer class="footer">
-    <div class="footer-brand"><div class="nav-logo">FIA</div>Fulfilment International Academy</div>
-    <p>© 2026 Fulfilment International Academy. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="students.html">Students</a>
-      <a href="register.html">Register</a>
+  <!-- Footer -->
+  <footer class="border-t border-primary/10 py-8 bg-white dark:bg-slate-950 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 bg-primary rounded flex items-center justify-center text-white text-[10px] font-bold">FIA</div>
+        <span class="text-slate-900 dark:text-slate-100 font-bold">Fulfilment International Academy</span> © 2026
+      </div>
+      <div class="flex gap-6">
+        <a class="hover:text-primary transition-colors" href="index.html">Home</a>
+        <a class="hover:text-primary transition-colors" href="students.html">Students</a>
+        <a class="hover:text-primary transition-colors" href="register.html">Register</a>
+      </div>
     </div>
   </footer>
 
-  <!-- Supabase SDK -->
+  <div id="toast-container"></div>
+
+  <!-- Academy Database SDK & Real-time logic -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/app.js"></script>
   <script src="js/students.js"></script>
+  
+  <script>
+    // Minimal override to ensure toggle buttons work UI-wise, 
+    // real logic handled by students.js (which toggles classes and displays)
+    document.addEventListener('DOMContentLoaded', () => {
+      const vts = document.querySelectorAll('.vt-btn');
+      vts.forEach(btn => {
+        btn.addEventListener('click', () => {
+          vts.forEach(b => {
+             // Reset inactive state
+             b.classList.remove('bg-white', 'dark:bg-slate-700', 'text-primary', 'shadow-sm', 'active');
+             b.classList.add('text-slate-400', 'hover:text-slate-600', 'dark:hover:text-slate-200');
+          });
+          // Set active state
+          btn.classList.add('bg-white', 'dark:bg-slate-700', 'text-primary', 'shadow-sm', 'active');
+          btn.classList.remove('text-slate-400', 'hover:text-slate-600', 'dark:hover:text-slate-200');
+        });
+      });
+    });
+  </script>
 </body>
 </html>

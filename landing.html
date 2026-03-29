@@ -3,470 +3,373 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fulfilment International Academy — Empowering Students, Transforming Futures</title>
+  <title>Fulfilment International Academy | Shaping Tomorrow's Leaders</title>
   <meta name="description" content="Fulfilment International Academy offers 14 world-class academic programmes with a fully digital campus experience. Join the waitlist today." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200..800&display=swap" rel="stylesheet" />
+  <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/landing.css" />
-</head>
-<body>
-
-  <!-- ─── ANIMATED BACKGROUND ORBS ─── -->
-  <div aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-
-  <!-- ═══════════════════════════════════
-       NAVBAR
-  ════════════════════════════════════ -->
-  <nav class="land-nav" id="landNav">
-    <a class="nav-brand" href="landing.html" style="text-decoration:none">
-      <div class="nav-logo">FIA</div>
-      <div class="nav-title">Fulfilment Int'l Academy<span>Shaping Tomorrow's Leaders</span></div>
-    </a>
-    <div class="land-nav-links">
-      <a href="#about">About</a>
-      <a href="#programmes">Programmes</a>
-      <a href="#why">Why FIA</a>
-      <a href="#waitlist">Waitlist</a>
-      <a href="register.html" class="btn btn-outline btn-sm" style="padding:8px 20px">📝 Register Student</a>
-      <a href="login.html" class="btn btn-gold btn-sm" style="padding:8px 20px">🔐 Staff Login</a>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-[max(884px,100dvh)]">
+  
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="landing.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+          <span class="material-symbols-outlined text-sm">school</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-bold tracking-tight leading-none">FIA</span>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-6 font-medium text-sm">
+        <a class="hover:text-primary transition-colors" href="#about">About</a>
+        <a class="hover:text-primary transition-colors" href="#programmes">Programmes</a>
+        <a class="hover:text-primary transition-colors" href="#why">Why FIA</a>
+        <a class="hover:text-primary transition-colors pr-4 border-r border-primary/20" href="#waitlist">Waitlist</a>
+        
+        <!-- Portal Links -->
+        <a href="student_login.html" class="flex items-center gap-1 text-primary hover:text-primary/80 transition-colors">
+          <span class="material-symbols-outlined text-[18px]">person</span> Student Portal
+        </a>
+        <a href="login.html" class="flex items-center gap-1 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-[18px]">shield_person</span> Staff Login
+        </a>
+      </div>
     </div>
   </nav>
 
-  <!-- ═══════════════════════════════════
-       HERO
-  ════════════════════════════════════ -->
-  <section class="land-hero" id="home">
-    <div class="land-hero-content">
-      <div class="land-hero-badge">🏆 Accredited International Institution &nbsp;·&nbsp; Est. 2010</div>
-      <h1>Fulfilment<br><em id="typedText">International Academy</em></h1>
-      <p>Providing world-class education, cutting-edge programmes, and a fully digital learning experience. Empowering students across the globe to shape tomorrow.</p>
-      <div class="land-hero-btns">
-        <a href="#waitlist" class="btn btn-primary btn-lg">📋 Join the Waitlist</a>
-        <a href="login.html" class="btn btn-outline btn-lg">🔐 Staff Login →</a>
+  <main>
+    <!-- Hero Section -->
+    <div class="relative flex h-auto min-h-[90vh] w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden pt-8">
+      <div class="@container">
+        <div class="flex flex-col gap-6 px-4 py-12 @[480px]:gap-8 @[864px]:flex-row max-w-7xl mx-auto items-center">
+          <div class="flex flex-col gap-6 @[480px]:min-w-[500px] @[480px]:gap-8 @[864px]:justify-center @[864px]:w-1/2 z-10">
+            <div class="flex flex-col gap-4 text-left">
+              <span class="text-primary font-bold tracking-widest uppercase text-xs flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">public</span> Accredited International Institution · Est. 2010
+              </span>
+              <h1 class="text-slate-900 dark:text-slate-100 text-5xl font-black leading-tight tracking-[-0.033em] @[480px]:text-7xl @[480px]:leading-[1.1]">
+                Fulfilment<br/><span class="text-primary" id="typedText">International Academy</span>
+              </h1>
+              <h2 class="text-slate-600 dark:text-slate-400 text-lg font-normal leading-relaxed @[480px]:text-xl max-w-lg">
+                Providing world-class education and a fully digital learning experience. Empowering students across the globe to shape tomorrow.
+              </h2>
+            </div>
+            <div class="flex-wrap gap-4 flex mt-2">
+              <a href="#waitlist" class="flex min-w-[140px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 transition-all">
+                Join the Waitlist
+              </a>
+              <a href="student_login.html" class="flex min-w-[140px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-8 bg-white dark:bg-slate-900/50 text-slate-900 dark:text-white text-lg font-bold leading-normal tracking-[0.015em] border border-primary/20 hover:border-primary/50 transition-all shadow-sm shadow-primary/5">
+                Student Portal &rarr;
+              </a>
+            </div>
+            
+            <!-- Hero Stats Row -->
+            <div class="flex flex-wrap gap-4 mt-8 pt-8 border-t border-primary/10">
+              <div class="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[16px]">school</span></div>
+                <span id="liveCount" class="text-primary">—</span> Students Enrolled
+              </div>
+              <div class="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[16px]">menu_book</span></div>
+                14 Programmes
+              </div>
+              <div class="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[16px]">language</span></div>
+                30+ Countries
+              </div>
+            </div>
+          </div>
+          <div class="w-full bg-center bg-no-repeat aspect-square md:aspect-[4/3] bg-cover rounded-2xl @[480px]:h-auto @[864px]:w-1/2 shadow-2xl shadow-primary/20 border border-primary/10" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200');">
+          </div>
+        </div>
       </div>
-      <div class="hero-stats-row">
-        <div class="hero-stat-pill">🎓 <strong id="liveCount">—</strong> Students Enrolled</div>
-        <div class="hero-stat-pill">📚 <strong>14</strong> Programmes</div>
-        <div class="hero-stat-pill">⭐ <strong>98%</strong> Satisfaction</div>
-        <div class="hero-stat-pill">🌍 <strong>30+</strong> Countries</div>
-      </div>
-      <div class="scroll-indicator">
-        <div class="scroll-dot"></div>
-        <span>Scroll to explore</span>
+      
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-70">
+        <span class="text-xs uppercase tracking-widest font-bold text-primary">Explore</span>
+        <span class="material-symbols-outlined text-primary">arrow_downward</span>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════════════════════════════
-       ABOUT
-  ════════════════════════════════════ -->
-  <section class="land-section" id="about">
-    <div class="land-section-inner">
-      <div class="about-grid">
-        <!-- Text -->
-        <div>
-          <div class="section-label reveal">Who We Are</div>
-          <h2 class="section-title reveal" style="text-align:left;margin-bottom:18px">
-            A Premier Institution <span class="highlight">Built for the Modern World</span>
-          </h2>
-          <p style="color:var(--text-muted);line-height:1.8;margin-bottom:28px" class="reveal">
+    <!-- About Section -->
+    <div class="flex flex-col gap-10 px-4 py-24 bg-white dark:bg-slate-900/30 border-y border-primary/5" id="about">
+      <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row gap-16 items-center">
+        <div class="w-full md:w-1/2 relative">
+          <div class="absolute -inset-4 bg-primary/5 rounded-3xl -z-10 rotate-3 transform-gpu"></div>
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800" alt="Students engaging in digital learning" class="rounded-2xl shadow-xl w-full border border-primary/10" />
+          
+          <div class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 p-6 rounded-xl shadow-xl border border-primary/10 animate-pulse">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary"><span class="material-symbols-outlined">verified</span></div>
+              <div>
+                <p class="font-black text-xl text-slate-900 dark:text-white">100%</p>
+                <p class="text-sm text-slate-500 uppercase tracking-wider font-bold">Online Capability</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="w-full md:w-1/2 flex flex-col gap-6">
+          <div class="flex flex-col gap-2">
+            <h3 class="text-primary font-bold uppercase text-sm tracking-widest">Who We Are</h3>
+            <h2 class="text-slate-900 dark:text-slate-100 tracking-light text-4xl font-black leading-tight @[480px]:text-5xl">
+              A Premier Institution <span class="text-primary italic">Built for the Modern World</span>
+            </h2>
+          </div>
+          <p class="text-slate-600 dark:text-slate-400 text-lg font-normal leading-relaxed">
             Founded in 2010, Fulfilment International Academy was established with one mission: to make world-class, internationally recognised education accessible to all. We combine rigorous academic standards with a fully digital campus — empowering students wherever they are in the world.
           </p>
-          <div class="values-list">
-            <div class="value-item reveal">
-              <span class="value-icon">🎯</span>
+          
+          <div class="grid grid-cols-1 gap-6 mt-4">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded flex items-center justify-center text-primary flex-shrink-0"><span class="material-symbols-outlined">track_changes</span></div>
               <div>
-                <h5>Mission-Driven</h5>
-                <p>Every programme is designed to produce graduates who are job-ready, globally competitive, and purpose-driven.</p>
+                <h4 class="font-bold text-lg text-slate-900 dark:text-white leading-none mb-1">Mission-Driven</h4>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Producing graduates who are job-ready, globally competitive, and purpose-driven.</p>
               </div>
             </div>
-            <div class="value-item reveal">
-              <span class="value-icon">🌍</span>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded flex items-center justify-center text-primary flex-shrink-0"><span class="material-symbols-outlined">public</span></div>
               <div>
-                <h5>Globally Connected</h5>
-                <p>With students from over 30 countries, our campus is a hub of cultural exchange, collaboration, and global thinking.</p>
+                <h4 class="font-bold text-lg text-slate-900 dark:text-white leading-none mb-1">Globally Connected</h4>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Students from over 30 countries create a hub of cultural exchange and global thinking.</p>
               </div>
             </div>
-            <div class="value-item reveal">
-              <span class="value-icon">⚡</span>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 bg-primary/10 rounded flex items-center justify-center text-primary flex-shrink-0"><span class="material-symbols-outlined">bolt</span></div>
               <div>
-                <h5>Fully Digital</h5>
-                <p>Our cutting-edge digital student management system ensures a seamless academic experience from enrolment to graduation.</p>
+                <h4 class="font-bold text-lg text-slate-900 dark:text-white leading-none mb-1">Fully Digital</h4>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Cutting-edge digital management system ensuring a seamless academic experience.</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Visual cards -->
-        <div class="about-visual reveal">
-          <div class="about-card ac1">
-            <div class="about-card-icon">🏛️</div>
-            <h4>International Accreditation</h4>
-            <p>Our degrees are recognised by academic institutions and employers worldwide. Your qualification is your passport.</p>
-            <div class="hero-stat-pill" style="width:fit-content;margin-top:14px;font-size:0.78rem">
-              ✅ Globally Recognised
-            </div>
-          </div>
-          <div class="about-card ac2">
-            <div class="about-card-icon">💻</div>
-            <h4>Digital-First Campus</h4>
-            <p>Study, register, and manage your academic journey entirely online — powered by a state-of-the-art platform.</p>
-          </div>
+    <!-- Stats Bar -->
+    <div class="max-w-7xl mx-auto w-full px-4 -mt-12 relative z-20 mb-12">
+      <div class="flex flex-wrap gap-4 p-4 bg-white dark:bg-slate-900/80 backdrop-blur-md rounded-xl border border-primary/10 shadow-xl" id="stats">
+        <div class="flex min-w-[158px] flex-1 flex-col gap-1 rounded p-6 border border-primary/5 hover:border-primary/20 hover:bg-primary/[0.02] transition-colors">
+          <p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider text-center">Students Enrolled</p>
+          <p class="text-primary tracking-light text-5xl font-black leading-tight text-center">1,200+</p>
+        </div>
+        <div class="flex min-w-[158px] flex-1 flex-col gap-1 rounded p-6 border border-primary/5 hover:border-primary/20 hover:bg-primary/[0.02] transition-colors">
+          <p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider text-center">Programmes</p>
+          <p class="text-primary tracking-light text-5xl font-black leading-tight text-center">14</p>
+        </div>
+        <div class="flex min-w-[158px] flex-1 flex-col gap-1 rounded p-6 border border-primary/5 hover:border-primary/20 hover:bg-primary/[0.02] transition-colors">
+          <p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider text-center">Years Exellence</p>
+          <p class="text-primary tracking-light text-5xl font-black leading-tight text-center">15</p>
+        </div>
+        <div class="flex min-w-[158px] flex-1 flex-col gap-1 rounded p-6 border border-primary/5 hover:border-primary/20 hover:bg-primary/[0.02] transition-colors">
+          <p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider text-center">Satisfaction</p>
+          <p class="text-primary tracking-light text-5xl font-black leading-tight text-center">98%</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════════════════════════════
-       STATS COUNTER
-  ════════════════════════════════════ -->
-  <section class="land-section stats-section" id="stats" style="padding:0">
-    <div class="stats-counters">
-      <div class="counter-item reveal">
-        <div class="counter-num" data-target="1200" data-suffix="+">0</div>
-        <div class="counter-label">Students Enrolled</div>
-      </div>
-      <div class="counter-item reveal">
-        <div class="counter-num" data-target="14">0</div>
-        <div class="counter-label">Academic Programmes</div>
-      </div>
-      <div class="counter-item reveal">
-        <div class="counter-num" data-target="15" data-suffix=" Yrs">0</div>
-        <div class="counter-label">Years of Excellence</div>
-      </div>
-      <div class="counter-item reveal">
-        <div class="counter-num" data-target="98" data-suffix="%">0</div>
-        <div class="counter-label">Student Satisfaction</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════
-       PROGRAMMES
-  ════════════════════════════════════ -->
-  <section class="land-section" id="programmes">
-    <div class="land-section-inner">
-      <div style="text-align:center;margin-bottom:56px">
-        <div class="section-label reveal">Academic Offerings</div>
-        <h2 class="section-title reveal">Our 14 World-Class <span class="highlight">Programmes</span></h2>
-        <p style="color:var(--text-muted);max-width:540px;margin:0 auto" class="reveal">
-          From business and technology to healthcare and law — choose a programme designed to launch your career on the global stage.
-        </p>
-      </div>
-      <div class="programmes-grid">
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">💼</div>
-          <div class="prog-title">Business Administration</div>
-          <div class="prog-desc">Develop leadership and strategic management skills for the modern global business environment.</div>
-          <span class="prog-badge">3 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">💻</div>
-          <div class="prog-title">Computer Science</div>
-          <div class="prog-desc">Master software development, algorithms, AI concepts, and cutting-edge computing technologies.</div>
-          <span class="prog-badge">4 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">📊</div>
-          <div class="prog-title">Data Analytics</div>
-          <div class="prog-desc">Turn data into decisions with skills in statistics, machine learning, and data visualisation.</div>
-          <span class="prog-badge">3 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">📱</div>
-          <div class="prog-title">Digital Marketing</div>
-          <div class="prog-desc">Lead brands in the digital age through SEO, social media, content strategy, and analytics.</div>
-          <span class="prog-badge">2 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">🎓</div>
-          <div class="prog-title">Education & Leadership</div>
-          <div class="prog-desc">Prepare to lead educational institutions with modern pedagogy and leadership frameworks.</div>
-          <span class="prog-badge">3 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">⚙️</div>
-          <div class="prog-title">Engineering Technology</div>
-          <div class="prog-desc">Bridge engineering principles with practical technology applications for real-world impact.</div>
-          <span class="prog-badge">4 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">💰</div>
-          <div class="prog-title">Finance & Accounting</div>
-          <div class="prog-desc">Master financial analysis, accounting principles, and investment strategy for a global economy.</div>
-          <span class="prog-badge">3 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">🏥</div>
-          <div class="prog-title">Healthcare Management</div>
-          <div class="prog-desc">Lead healthcare systems and organisations with expertise in both clinical and administrative operations.</div>
-          <span class="prog-badge">3 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">👥</div>
-          <div class="prog-title">Human Resource Management</div>
-          <div class="prog-desc">Build and lead high-performing teams with expertise in talent acquisition, development, and culture.</div>
-          <span class="prog-badge">3 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">🌐</div>
-          <div class="prog-title">International Relations</div>
-          <div class="prog-desc">Understand geopolitics, diplomacy, and global governance to navigate international affairs.</div>
-          <span class="prog-badge">3 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">⚖️</div>
-          <div class="prog-title">Law & Governance</div>
-          <div class="prog-desc">Study legal systems, corporate law, and policy frameworks shaping our world today.</div>
-          <span class="prog-badge">4 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">📅</div>
-          <div class="prog-title">Project Management</div>
-          <div class="prog-desc">Deliver complex projects on time with Agile, PMP-aligned methodologies and leadership skills.</div>
-          <span class="prog-badge">2 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">🧠</div>
-          <div class="prog-title">Psychology</div>
-          <div class="prog-desc">Explore human behaviour, mental health, and research methods with a globally recognised curriculum.</div>
-          <span class="prog-badge">3 Years</span>
-        </div>
-
-        <div class="programme-card reveal">
-          <div class="prog-icon">🚚</div>
-          <div class="prog-title">Supply Chain & Logistics</div>
-          <div class="prog-desc">Master end-to-end supply chain operations, procurement, and global trade logistics.</div>
-          <span class="prog-badge">3 Years</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════
-       WHY FIA
-  ════════════════════════════════════ -->
-  <section class="land-section" id="why" style="background:rgba(255,255,255,0.01);border-top:1px solid var(--border)">
-    <div class="land-section-inner">
-      <div style="text-align:center;margin-bottom:56px">
-        <div class="section-label reveal">Why Choose Us</div>
-        <h2 class="section-title reveal">What Sets FIA <span class="highlight">Apart</span></h2>
-      </div>
-      <div class="why-grid">
-        <div class="why-card reveal">
-          <div class="why-card-icon" style="background:rgba(79,142,247,0.1)">🏆</div>
-          <h3>Internationally Accredited</h3>
-          <p>Our qualifications are recognised by employers and academic institutions across the globe, opening doors worldwide.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-card-icon" style="background:rgba(245,200,66,0.1)">👨‍🏫</div>
-          <h3>Expert Faculty</h3>
-          <p>Learn from academicians and industry professionals with real-world experience at the highest levels of their fields.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-card-icon" style="background:rgba(67,209,142,0.1)">📱</div>
-          <h3>Flexible Learning</h3>
-          <p>Study at your own pace with our blended learning approach — ideal for working professionals and international students.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-card-icon" style="background:rgba(79,142,247,0.1)">🌍</div>
-          <h3>Global Network</h3>
-          <p>Join a powerful alumni community of 1,200+ graduates in over 30 countries — your network for life.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-card-icon" style="background:rgba(245,200,66,0.1)">💰</div>
-          <h3>Scholarship Opportunities</h3>
-          <p>We believe talent should never be limited by finances. Merit-based scholarships are available every academic year.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-card-icon" style="background:rgba(67,209,142,0.1)">🧑‍💼</div>
-          <h3>Career Support</h3>
-          <p>Dedicated career services including CV workshops, interview coaching, and direct connections to top employers.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════
-       TESTIMONIALS
-  ════════════════════════════════════ -->
-  <section class="land-section" id="testimonials">
-    <div class="land-section-inner">
-      <div style="text-align:center">
-        <div class="section-label reveal">Student Stories</div>
-        <h2 class="section-title reveal">What Our <span class="highlight">Graduates Say</span></h2>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card reveal">
-          <div class="stars">★★★★★</div>
-          <div class="quote-mark">"</div>
-          <div class="testimonial-text">Studying at FIA was the best decision of my life. The programme was rigorous, the faculty were exceptional, and the global network I built has opened doors I never imagined.</div>
-          <div class="testimonial-author">
-            <div class="test-avatar av0">KO</div>
-            <div>
-              <div class="test-name">Kwame Osei</div>
-              <div class="test-course">Business Administration, Class of 2023</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal">
-          <div class="stars">★★★★★</div>
-          <div class="quote-mark">"</div>
-          <div class="testimonial-text">The digital platform made everything so easy — from registration to accessing my results. Six months after graduating I landed a role at a leading tech firm. FIA prepared me completely.</div>
-          <div class="testimonial-author">
-            <div class="test-avatar av2">AM</div>
-            <div>
-              <div class="test-name">Amina Mohammed</div>
-              <div class="test-course">Computer Science, Class of 2024</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card reveal">
-          <div class="stars">★★★★★</div>
-          <div class="quote-mark">"</div>
-          <div class="testimonial-text">As an international student, I was worried about fitting in — but FIA's community made it feel like home from day one. The scholarship support was a game-changer for my family.</div>
-          <div class="testimonial-author">
-            <div class="test-avatar av4">TP</div>
-            <div>
-              <div class="test-name">Tunde Phillip</div>
-              <div class="test-course">International Relations, Class of 2022</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════
-       WAITLIST
-  ════════════════════════════════════ -->
-  <section class="land-section waitlist-section" id="waitlist">
-    <div class="waitlist-inner">
-      <div class="section-label reveal">Limited Spots Available</div>
-      <h2 class="section-title reveal">Join the <span class="highlight">Waitlist</span></h2>
-      <p style="color:var(--text-muted);margin-bottom:0" class="reveal">
-        Applications for the next intake are opening soon. Register your interest now to get early access, priority notification, and scholarship information.
-      </p>
-
-      <!-- Form card -->
-      <div class="waitlist-form-card glass reveal" id="waitlistFormCard">
-        <form id="waitlistForm" novalidate>
-          <div class="form-grid form-grid-2" style="gap:18px">
-            <div class="form-group" style="grid-column:1/-1">
-              <label for="wlName">Full Name <span class="required">*</span></label>
-              <input type="text" id="wlName" class="form-control" placeholder="Your full name" required />
-            </div>
-            <div class="form-group">
-              <label for="wlEmail">Email Address <span class="required">*</span></label>
-              <input type="email" id="wlEmail" class="form-control" placeholder="you@example.com" required />
-            </div>
-            <div class="form-group">
-              <label for="wlPhone">Phone Number</label>
-              <input type="tel" id="wlPhone" class="form-control" placeholder="+1 234 567 8900" />
-            </div>
-            <div class="form-group" style="grid-column:1/-1">
-              <label for="wlCourse">Programme of Interest</label>
-              <select id="wlCourse" class="form-control">
-                <option value="">— Select a programme —</option>
-              </select>
-            </div>
-            <div class="form-group" style="grid-column:1/-1">
-              <label for="wlMessage">Message or Questions (optional)</label>
-              <textarea id="wlMessage" class="form-control" rows="3" placeholder="Tell us a bit about yourself or ask us anything…"></textarea>
-            </div>
-          </div>
-          <button type="submit" id="wlSubmitBtn" class="btn btn-primary btn-lg" style="width:100%;margin-top:8px">
-            🎓 Join the Waitlist
-          </button>
-          <p style="font-size:0.78rem;color:var(--text-muted);text-align:center;margin-top:12px">
-            🔒 Your information is kept private and never shared. No spam, ever.
+    <!-- Programmes Section -->
+    <div class="flex flex-col gap-10 px-4 py-24 bg-primary/[0.02] @container" id="programmes">
+      <div class="max-w-7xl mx-auto w-full flex flex-col gap-8">
+        <div class="flex flex-col gap-2 items-center text-center">
+          <h3 class="text-primary font-bold uppercase text-sm tracking-widest">Academic Offerings</h3>
+          <h2 class="text-slate-900 dark:text-slate-100 tracking-light text-4xl font-black leading-tight @[480px]:text-5xl max-w-[720px]">
+            14 World-Class Programmes
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-lg font-normal leading-relaxed max-w-[720px]">
+            From business and technology to healthcare and law — choose a programme designed to launch your career on the global stage.
           </p>
-        </form>
-      </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
+          <!-- Programme 1 -->
+          <div class="group flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-8 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all">
+            <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined">business_center</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h4 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight">Business Admin</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed min-h-[60px]">Develop leadership and strategic management skills for the global business environment.</p>
+              <div class="mt-4 inline-flex items-center justify-center px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded w-max uppercase tracking-wider">3 Years</div>
+            </div>
+          </div>
+          
+          <!-- Programme 2 -->
+          <div class="group flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-8 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all">
+            <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined">computer</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h4 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight">Computer Science</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed min-h-[60px]">Master software development, algorithms, AI concepts, and computing technologies.</p>
+              <div class="mt-4 inline-flex items-center justify-center px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded w-max uppercase tracking-wider">4 Years</div>
+            </div>
+          </div>
 
-      <!-- Success state -->
-      <div class="waitlist-success" id="waitlistSuccess">
-        <div class="wl-success-icon">🎉</div>
-        <h3>You're on the List!</h3>
-        <p>Thank you, <strong id="wlSuccessName"></strong>! We'll be in touch with application details and scholarship information soon.</p>
-        <a href="#programmes" class="btn btn-outline" style="margin-top:8px">Explore Programmes</a>
+          <!-- Programme 3 -->
+          <div class="group flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-8 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all">
+            <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined">data_usage</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h4 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight">Data Analytics</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed min-h-[60px]">Turn data into decisions with skills in statistics, machine learning, and visualisation.</p>
+              <div class="mt-4 inline-flex items-center justify-center px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded w-max uppercase tracking-wider">3 Years</div>
+            </div>
+          </div>
+
+          <!-- Programme 4 -->
+          <div class="group flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-8 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all">
+            <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined">campaign</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h4 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight">Digital Marketing</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed min-h-[60px]">Lead brands in the digital age through SEO, social media, content strategy, and analytics.</p>
+              <div class="mt-4 inline-flex items-center justify-center px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded w-max uppercase tracking-wider">2 Years</div>
+            </div>
+          </div>
+          
+          <!-- Add more programmes as needed to fill the grid visually -->
+           <div class="group flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-8 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all">
+            <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined">local_hospital</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h4 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight">Healthcare Mgmt</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed min-h-[60px]">Lead healthcare systems and organisations with clinical and administrative expertise.</p>
+              <div class="mt-4 inline-flex items-center justify-center px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded w-max uppercase tracking-wider">3 Years</div>
+            </div>
+          </div>
+
+           <div class="group flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-8 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all">
+            <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined">gavel</span>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h4 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight">Law & Governance</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed min-h-[60px]">Study legal systems, corporate law, and policy frameworks shaping our world today.</p>
+              <div class="mt-4 inline-flex items-center justify-center px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded w-max uppercase tracking-wider">4 Years</div>
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="text-center mt-6">
+          <button class="text-primary font-bold hover:underline">View All 14 Programmes &rarr;</button>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════════════════════════════
-       FOOTER
-  ════════════════════════════════════ -->
-  <footer class="land-footer">
-    <div class="land-footer-inner">
-      <div class="land-footer-brand">
-        <div class="nav-brand" style="display:flex;align-items:center;gap:10px">
-          <div class="nav-logo">FIA</div>
-          <div class="nav-title">Fulfilment Int'l Academy<span>Shaping Tomorrow's Leaders</span></div>
+    <!-- Waitlist CTA Section -->
+    <div class="px-4 py-24 max-w-7xl mx-auto w-full" id="waitlist">
+      <div class="relative overflow-hidden rounded-3xl bg-primary px-8 py-16 text-center text-white shadow-2xl">
+        <div class="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent"></div>
+        
+        <!-- Waitlist Form Area -->
+        <div class="relative z-10 flex flex-col md:flex-row gap-12 items-center text-left max-w-5xl mx-auto">
+          
+          <div class="w-full md:w-1/2 flex flex-col gap-4">
+             <span class="text-white/80 font-bold tracking-widest uppercase text-xs">Limited Spots Available</span>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight">Join the Waitlist Today.</h2>
+            <p class="text-white/90 text-lg max-w-md">
+                Applications for the next intake are opening soon. Register your interest now to get early access, priority notification, and scholarship information.
+             </p>
+          </div>
+          
+          <!-- Waitlist Form Card -->
+          <div class="w-full md:w-1/2">
+             <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-xl text-slate-900 dark:text-white" id="waitlistFormCard">
+              <form id="waitlistForm" novalidate onsubmit="event.preventDefault(); document.getElementById('waitlistForm').style.display='none'; document.getElementById('waitlistSuccess').style.display='block'; document.getElementById('wlSuccessName').innerText=document.getElementById('wlName').value;">
+                <div class="flex flex-col gap-5">
+                  <div>
+                    <label for="wlName" class="block text-sm font-semibold mb-1">Full Name</label>
+                    <input type="text" id="wlName" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3" placeholder="Your full name" required />
+                  </div>
+                  <div>
+                    <label for="wlEmail" class="block text-sm font-semibold mb-1">Email Address</label>
+                    <input type="email" id="wlEmail" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3" placeholder="you@example.com" required />
+                  </div>
+                  <div>
+                    <label for="wlCourse" class="block text-sm font-semibold mb-1">Programme of Interest</label>
+                    <select id="wlCourse" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3 font-sans">
+                      <option value="">— Select a programme —</option>
+                      <option value="cs">Computer Science</option>
+                      <option value="ba">Business Administration</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg transition-colors mt-2 text-lg shadow-lg shadow-primary/30">
+                    Secure My Spot
+                  </button>
+                </div>
+              </form>
+              
+              <!-- Success State -->
+              <div class="hidden text-center py-8" id="waitlistSuccess">
+                 <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4"><span class="material-symbols-outlined text-3xl">check_circle</span></div>
+                 <h3 class="text-2xl font-black text-slate-900 dark:text-white mb-2">You're on the list!</h3>
+                 <p class="text-slate-600 dark:text-slate-400">Thank you, <strong id="wlSuccessName"></strong>. We will be in touch shortly.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <p>We are committed to delivering internationally recognised, accessible, and impactful education to students across the globe.</p>
-        <div style="display:flex;gap:10px;margin-top:8px">
-          <span title="Facebook" style="cursor:pointer;font-size:1.2rem">📘</span>
-          <span title="Twitter / X" style="cursor:pointer;font-size:1.2rem">🐦</span>
-          <span title="LinkedIn" style="cursor:pointer;font-size:1.2rem">💼</span>
-          <span title="Instagram" style="cursor:pointer;font-size:1.2rem">📸</span>
-        </div>
-      </div>
-      <div class="land-footer-col">
-        <h5>Explore</h5>
-        <a href="#about">About FIA</a>
-        <a href="#programmes">Programmes</a>
-        <a href="#why">Why Choose Us</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#waitlist">Join Waitlist</a>
-      </div>
-      <div class="land-footer-col">
-        <h5>Programmes</h5>
-        <a href="#programmes">Business Administration</a>
-        <a href="#programmes">Computer Science</a>
-        <a href="#programmes">Data Analytics</a>
-        <a href="#programmes">Digital Marketing</a>
-        <a href="#programmes">Finance & Accounting</a>
-        <a href="#programmes">View All 14 →</a>
-      </div>
-      <div class="land-footer-col">
-        <h5>Staff Portal</h5>
-        <a href="login.html">🔐 Staff Login</a>
-        <a href="students.html">📋 Student Registry</a>
-        <a href="register.html">📝 Register Student</a>
-        <a href="index.html">🏠 Portal Home</a>
       </div>
     </div>
-    <div class="land-footer-bottom">
-      <span>© 2026 Fulfilment International Academy. All rights reserved.</span>
-      <span>Built with ❤️ for excellence in education</span>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-primary/10 py-16 bg-white dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div class="col-span-1 md:col-span-1 flex flex-col gap-4">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+            <span class="material-symbols-outlined text-sm">school</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight">FIA</span>
+        </div>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+           Delivering internationally recognised, accessible, and impactful education to students across the globe since 2010.
+        </p>
+        <div class="flex gap-4 mt-2">
+          <a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+          <a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+        </div>
+      </div>
+      
+      <div class="flex flex-col gap-4">
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-sm">Explore</h5>
+        <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="#about">About FIA</a>
+        <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="#programmes">Programmes</a>
+        <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="#waitlist">Scholarships</a>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-sm">Portals</h5>
+         <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="student_login.html">Student Portal</a>
+         <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="login.html">Staff Login</a>
+         <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="students.html">Student Registry</a>
+      </div>
+      
+      <div class="flex flex-col gap-4">
+        <h5 class="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-sm">Legal</h5>
+         <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="#">Privacy Policy</a>
+         <a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="#">Terms of Service</a>
+      </div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 border-t border-primary/10 mt-12 pt-8 text-center text-slate-500 dark:text-slate-400 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+       <div>© 2026 Fulfilment International Academy. All rights reserved.</div>
+       <div>Built with precision and care.</div>
     </div>
   </footer>
 
   <div id="toast-container"></div>
-
-  <!-- Supabase + Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/landing.js"></script>
 </body>
 </html>

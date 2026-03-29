@@ -3,195 +3,217 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fulfilment International Academy — Excellence in Education</title>
-  <meta name="description" content="Fulfilment International Academy — A premier institution for higher education. Manage student records, registrations, and academic programs all in one place." />
+  <title>Staff Portal Dashboard | Fulfilment International Academy</title>
+  <meta name="description" content="Manage student records, registrations, and academic programs at Fulfilment International Academy." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200..800&display=swap" rel="stylesheet" />
+  <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
 
-  <!-- ─── NAVBAR ─── -->
-  <nav class="navbar">
-    <a class="nav-brand" href="index.html">
-      <div class="nav-logo">FIA</div>
-      <div class="nav-title">
-        Fulfilment Int'l Academy
-        <span>Shaping Tomorrow's Leaders</span>
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+          <span class="material-symbols-outlined text-sm">school</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-bold tracking-tight leading-none">FIA</span>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-6 font-medium text-sm">
+        <a class="text-primary font-bold border-b-2 border-primary pb-1" href="index.html">Dashboard</a>
+        <a class="hover:text-primary transition-colors" href="students.html">Students</a>
+        <a class="hover:text-primary transition-colors" href="register.html">Register</a>
+        <a class="text-gold font-bold pr-4 border-r border-primary/20 hover:text-gold/80 transition-colors flex items-center gap-1" href="landing.html"><span class="material-symbols-outlined text-[16px]">public</span> Public Site</a>
+        
+        <a href="login.html" id="navSignIn" class="flex items-center gap-1 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors hidden">
+          <span class="material-symbols-outlined text-[18px]">login</span> Sign In
+        </a>
+        <button id="navSignOut" class="flex items-center gap-1 text-slate-600 dark:text-slate-400 hover:text-red-500 transition-colors hidden cursor-pointer" onclick="signOut()">
+          <span class="material-symbols-outlined text-[18px]">logout</span> Sign Out
+        </button>
       </div>
-    </a>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html" class="active">Home</a>
-      <a href="students.html">Students</a>
-      <a href="register.html">Register</a>
-      <a href="landing.html" style="color:var(--gold)">🌐 Public Site</a>
-      <a href="login.html" id="navSignIn" class="nav-cta btn" style="display:none">🔐 Sign In</a>
-      <button id="navSignOut" class="nav-cta btn" style="display:none" onclick="signOut()">👋 Sign Out</button>
     </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
-  <!-- ─── HERO ─── -->
-  <section class="hero">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="hero-pill">🎓 Accredited International Institution</div>
-        <h1>
-          <span class="line1">Empowering Students,</span>
-          <span class="line2">Transforming Futures</span>
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col items-center py-12 px-4 max-w-7xl mx-auto w-full gap-8">
+    
+    <!-- Hero Box -->
+    <div class="w-full bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 shadow-xl border border-primary/10 relative overflow-hidden flex flex-col md:flex-row items-center gap-8 justify-between">
+      <div class="absolute -right-40 -top-40 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      
+      <div class="flex flex-col gap-4 relative z-10 text-left max-w-2xl">
+        <span class="text-primary font-bold tracking-widest uppercase text-xs flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">verified</span> Accredited International Institution</span>
+        <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">
+          Empowering Students,<br/><span class="text-primary italic">Transforming Futures</span>
         </h1>
-        <p>Fulfilment International Academy provides world-class education, cutting-edge programs, and a fully digital student management system — all in one place.</p>
-        <div class="hero-btns">
-          <a href="register.html" class="btn btn-primary btn-lg">📝 Enrol a Student</a>
-          <a href="students.html" class="btn btn-outline btn-lg">📋 View Students</a>
-        </div>
-        <div class="hero-stats">
-          <div>
-            <div class="hero-stat-num"><span id="heroStatStudents">0</span>+</div>
-            <div class="hero-stat-label">Students Enrolled</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">14</div>
-            <div class="hero-stat-label">Programmes Offered</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">98<span>%</span></div>
-            <div class="hero-stat-label">Satisfaction Rate</div>
+        <p class="text-slate-500 dark:text-slate-400 text-lg">
+          Welcome to the Staff Portal. Manage course registrations, view dynamic student records, and oversee the fully digital student management system.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-4 items-center">
+          <a href="register.html" class="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">person_add</span> Enrol a Student
+          </a>
+          <a href="students.html" class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold py-3 px-6 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">group</span> View Student Registry
+          </a>
+          <div id="liveSyncIndicator" class="flex items-center gap-1 text-xs font-bold text-green-600 bg-green-100 dark:bg-green-900/30 px-3 py-1.5 rounded-full whitespace-nowrap border border-green-200 dark:border-green-800 ml-2">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Live Sync Active
           </div>
         </div>
       </div>
 
-      <!-- Hero Visual -->
-      <div class="hero-visual">
-        <div class="hero-card-stack">
-          <div class="hero-card-bg c1"></div>
-          <div class="hero-card-bg c2"></div>
-          <div class="hero-main-card">
-            <div class="hero-card-avatar">👤</div>
-            <div class="hero-card-name">Sample Student</div>
-            <div class="hero-card-course">Computer Science</div>
-            <div class="hero-card-bar">
-              <div class="hero-card-bar-fill"></div>
-            </div>
-            <div class="hero-card-bar-label">
-              <span>Progress</span><span>72%</span>
-            </div>
+      <!-- Quick Metrics -->
+      <div class="w-full md:w-auto grid grid-cols-2 gap-4 relative z-10 shrink-0">
+        <div class="bg-primary/5 border border-primary/20 p-6 rounded-2xl flex flex-col gap-1 items-center justify-center min-w-[140px]">
+           <span class="material-symbols-outlined text-primary text-3xl mb-1">group</span>
+           <span class="text-3xl font-black text-slate-900 dark:text-white leading-none" id="heroStatStudents">0</span>
+           <span class="text-xs uppercase tracking-widest font-bold text-slate-500 text-center">Students</span>
+        </div>
+        <div class="bg-gold/10 border border-gold/20 p-6 rounded-2xl flex flex-col gap-1 items-center justify-center min-w-[140px]">
+           <span class="material-symbols-outlined text-gold text-3xl mb-1">menu_book</span>
+           <span class="text-3xl font-black text-slate-900 dark:text-white leading-none">14</span>
+           <span class="text-xs uppercase tracking-widest font-bold text-slate-500 text-center">Programmes</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Grid -->
+    <div class="w-full py-12">
+      <div class="flex flex-col items-center text-center gap-2 mb-10">
+        <span class="text-primary font-bold tracking-widest uppercase text-xs">Platform Features</span>
+        <h2 class="text-3xl md:text-4xl font-black">Manage Your Academy <span class="text-primary italic">Effectively</span></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="group bg-white dark:bg-slate-900 rounded-2xl p-8 border border-primary/10 hover:shadow-xl hover:-translate-y-1 transition-all h-full flex flex-col gap-4">
+          <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-2xl">dataset</span>
           </div>
-          <div class="floating-badge fb1">✅ Enrolled &amp; Active</div>
-          <div class="floating-badge fb2">🏆 High Achiever</div>
+          <h3 class="text-xl font-bold">Student Registry</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Maintain a comprehensive, searchable database of all enrolled students with full profile details, course information, and contact records.</p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ─── FEATURES ─── -->
-  <section class="features">
-    <div class="container">
-      <div class="features-header">
-        <div class="section-label">What We Offer</div>
-        <h2 class="section-title">Everything You Need to <span class="highlight">Manage Your Academy</span></h2>
-        <p class="section-desc" style="margin:0 auto;">From student enrolment to full data management — Fulfilment International Academy puts everything at your fingertips.</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon fi-blue">📋</div>
-          <h3>Student Registry</h3>
-          <p>Maintain a comprehensive, searchable database of all enrolled students with full profile details, course information, and contact records.</p>
+        <div class="group bg-white dark:bg-slate-900 rounded-2xl p-8 border border-primary/10 hover:shadow-xl hover:-translate-y-1 transition-all h-full flex flex-col gap-4">
+          <div class="w-12 h-12 rounded-lg bg-gold/10 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-slate-900 transition-colors">
+            <span class="material-symbols-outlined text-2xl">flash_on</span>
+          </div>
+          <h3 class="text-xl font-bold">Quick Registration</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Enrol new students in seconds with our smart form. Auto-generates a unique Student ID and validates all data in real time.</p>
         </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon fi-gold">✏️</div>
-          <h3>Quick Registration</h3>
-          <p>Enrol new students in seconds with our smart form. Auto-generates a unique Student ID and validates all data in real time.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon fi-green">⚡</div>
-          <h3>Real-Time Updates</h3>
-          <p>Powered by Supabase — student records update live across all devices instantly. No refresh needed.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon fi-blue">🔐</div>
-          <h3>Secure Staff Login</h3>
-          <p>Protected by Supabase Auth. Only authorised academy staff can access student data — fully encrypted and secure.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon fi-gold">🔍</div>
-          <h3>Smart Search & Filter</h3>
-          <p>Instantly find any student by name, ID, or course. Advanced filters help you navigate hundreds of records effortlessly.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon fi-green">📊</div>
-          <h3>Cloud Storage</h3>
-          <p>All data stored in a secure PostgreSQL cloud database — accessible from any device, any browser, anywhere in the world.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ─── STATS BAND ─── -->
-  <section class="stats-band">
-    <div class="container">
-      <div class="stats-band-inner">
-        <div class="stat-item reveal">
-          <div class="num" id="statStudents">0</div>
-          <div class="lbl">Students Managed</div>
+        <div class="group bg-white dark:bg-slate-900 rounded-2xl p-8 border border-primary/10 hover:shadow-xl hover:-translate-y-1 transition-all h-full flex flex-col gap-4">
+          <div class="w-12 h-12 rounded-lg bg-green-500/10 text-green-500 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-2xl">menu_book</span>
+          </div>
+          <h3 class="text-xl font-bold">Programme Management</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Actively manage our 14 world-class academic programmes. Update curricula, adjust course offerings, and track departmental progress intuitively.</p>
         </div>
-        <div class="stat-item reveal">
-          <div class="num">14</div>
-          <div class="lbl">Academic Programmes</div>
+
+         <div class="group bg-white dark:bg-slate-900 rounded-2xl p-8 border border-primary/10 hover:shadow-xl hover:-translate-y-1 transition-all h-full flex flex-col gap-4">
+          <div class="w-12 h-12 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center group-hover:bg-red-500 group-hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-2xl">trending_up</span>
+          </div>
+          <h3 class="text-xl font-bold">Student Progression</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Monitor student academic performance in real time. Track grades, credits earned, and ensure students are on the right path to graduation.</p>
         </div>
-        <div class="stat-item reveal">
-          <div class="num">☁️</div>
-          <div class="lbl">Cloud-Powered Database</div>
+
+        <div class="group bg-white dark:bg-slate-900 rounded-2xl p-8 border border-primary/10 hover:shadow-xl hover:-translate-y-1 transition-all h-full flex flex-col gap-4">
+          <div class="w-12 h-12 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-2xl">manage_search</span>
+          </div>
+          <h3 class="text-xl font-bold">Smart Search</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Instantly find any student by name, ID, or course. Advanced filters help you navigate hundreds of records effortlessly.</p>
         </div>
-        <div class="stat-item reveal">
-          <div class="num">24/7</div>
-          <div class="lbl">Always Available</div>
+
+        <div class="group bg-white dark:bg-slate-900 rounded-2xl p-8 border border-primary/10 hover:shadow-xl hover:-translate-y-1 transition-all h-full flex flex-col gap-4">
+          <div class="w-12 h-12 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center group-hover:bg-blue-500 group-hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-2xl">event_available</span>
+          </div>
+          <h3 class="text-xl font-bold">Course Scheduling</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Effortlessly coordinate classes, lectures, and exams for all academy departments. Ensure a seamless academic calendar year-round.</p>
         </div>
+
       </div>
     </div>
-  </section>
 
-  <!-- ─── CTA ─── -->
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-inner reveal">
-        <h2>Ready to Enrol Your First Student?</h2>
-        <p>It takes less than 60 seconds. Sign in, fill in the form, and the student is instantly in the cloud database.</p>
-        <div class="cta-btns">
-          <a href="register.html" class="btn btn-gold btn-lg">📝 Register a Student</a>
-          <a href="students.html" class="btn btn-outline btn-lg">View Student List →</a>
-        </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-primary/10 py-8 bg-white dark:bg-slate-950 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 bg-primary rounded flex items-center justify-center text-white text-[10px] font-bold">FIA</div>
+        <span class="text-slate-900 dark:text-slate-100 font-bold">Fulfilment International Academy</span> © 2026
       </div>
-    </div>
-  </section>
-
-  <!-- ─── FOOTER ─── -->
-  <footer class="footer">
-    <div class="footer-brand">
-      <div class="nav-logo">FIA</div>
-      Fulfilment International Academy
-    </div>
-    <p>© 2026 Fulfilment International Academy. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="landing.html">🌐 Public Site</a>
-      <a href="index.html">Home</a>
-      <a href="students.html">Students</a>
-      <a href="login.html">Staff Login</a>
+      <div class="flex gap-6">
+        <a class="hover:text-primary transition-colors" href="landing.html">Public Site</a>
+        <a class="hover:text-primary transition-colors" href="index.html">Dashboard</a>
+        <a class="hover:text-primary transition-colors" href="login.html">Staff Login</a>
+      </div>
     </div>
   </footer>
 
   <div id="toast-container"></div>
-
-  <!-- Supabase SDK -->
+  
+  <!-- Academy Database SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/app.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
-      // Live student count from Supabase
-      const { count } = await db.from('students').select('*', { count: 'exact', head: true });
-      const total = count || 0;
-      animateCount(document.getElementById('heroStatStudents'), total);
-      animateCount(document.getElementById('statStudents'), total);
+      // Setup simple ease-out counter animation
+      function animateCount(elem, target) {
+        if (!elem) return;
+        let obj = { val: 0 };
+        const duration = 1500; // ms
+        const startTime = performance.now();
+        
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            
+            elem.innerText = Math.floor(easeProgress * target) + "+";
+            
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                elem.innerText = target + "+";
+            }
+        }
+        requestAnimationFrame(update);
+      }
+
+      // Fetch student count & subscribe
+      async function updateCount() {
+        try {
+          const { count } = await db.from('students').select('*', { count: 'exact', head: true });
+          const total = count || 0;
+          const statEl = document.getElementById('heroStatStudents');
+          const syncEl = document.getElementById('liveSyncIndicator');
+          
+          if (statEl) statEl.innerText = total;
+          if (syncEl) syncEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> ${total} Students Registered`;
+        } catch (err) {
+          console.error("Failed to load students", err);
+        }
+      }
+
+      await updateCount();
+
+      // Subscribe to real-time changes
+      db.channel('index-count')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'students' }, () => {
+          updateCount();
+        })
+        .subscribe();
     });
   </script>
 </body>

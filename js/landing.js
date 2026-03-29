@@ -152,8 +152,20 @@ function initWaitlistForm() {
 async function loadLiveCount() {
   const el = document.getElementById('liveCount');
   if (!el) return;
-  const { count } = await db.from('students').select('*', { count: 'exact', head: true });
-  el.textContent = count || '0';
+  
+  async function update() {
+    const { count } = await db.from('students').select('*', { count: 'exact', head: true });
+    el.textContent = count || '0';
+  }
+  
+  await update();
+  
+  // Real-time subscription for the public count
+  db.channel('public-count')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'students' }, () => {
+      update();
+    })
+    .subscribe();
 }
 
 /* ─── Spinner style injected ─── */

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Student Dashboard | Fulfilment International Academy</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200..800&display=swap" rel="stylesheet"/>
+    <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white font-bold font-display cursor-pointer" onclick="window.location.href='landing.html'">FIA</div>
+                <span class="text-xl font-bold tracking-tight font-display hidden sm:inline">Student Portal</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-medium">
+                <a class="hover:text-primary transition-colors text-sm" href="#dashboard">Dashboard</a>
+                <a class="hover:text-primary transition-colors text-sm" href="#results">Check Results</a>
+                <a class="hover:text-primary transition-colors text-sm" href="#courses">Apply for Courses</a>
+            </div>
+            <div>
+                <button onclick="window.location.href='landing.html'" class="bg-primary/10 text-primary border border-primary/20 px-4 py-1.5 rounded font-bold hover:bg-primary/20 transition-all text-sm">Sign Out</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto py-12 px-4 flex flex-col gap-12" id="dashboard">
+        <!-- Hero / Welcome -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-primary/10 shadow-lg flex flex-col md:flex-row gap-8 items-center justify-between">
+            <div class="flex flex-col gap-4">
+                <span class="text-primary font-bold tracking-widest uppercase text-xs">Fall Semester 2026</span>
+                <h1 class="text-3xl md:text-5xl font-black">Welcome back, Alex!</h1>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl text-lg">Manage your academic journey, view your latest results, and explore new programmes to shape your future.</p>
+                <div class="flex flex-wrap gap-4 mt-2 items-center">
+                    <a href="#results" class="bg-primary text-white px-6 py-2.5 rounded font-bold hover:opacity-90 transition-opacity">Check Latest Results</a>
+                    <a href="#courses" class="bg-primary/10 text-primary px-6 py-2.5 rounded font-bold hover:bg-primary/20 transition-opacity">Explore Courses</a>
+                    <div id="liveSyncIndicator" class="flex items-center gap-1 text-xs font-bold text-green-600 bg-green-100 dark:bg-green-900/30 px-3 py-1.5 rounded-full whitespace-nowrap border border-green-200 dark:border-green-800 ml-2">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Live Sync Active
+                    </div>
+                </div>
+            </div>
+            <div class="hidden md:block w-36 h-36 lg:w-48 lg:h-48 rounded-full border-4 border-primary/20 bg-slate-200 dark:bg-slate-800 flex-shrink-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400');"></div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="flex flex-wrap gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl border border-primary/10 shadow-sm">
+            <div class="flex flex-1 min-w-[150px] flex-col gap-1 rounded p-6 border border-primary/5 hover:border-primary/20 transition-colors">
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Credits Earned</p>
+                <p class="text-primary text-4xl font-black">45</p>
+            </div>
+            <div class="flex flex-1 min-w-[150px] flex-col gap-1 rounded p-6 border border-primary/5 hover:border-primary/20 transition-colors">
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Current GPA</p>
+                <p class="text-gold text-4xl font-black">3.8</p>
+            </div>
+            <div class="flex flex-1 min-w-[150px] flex-col gap-1 rounded p-6 border border-primary/5 hover:border-primary/20 transition-colors">
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Active Courses</p>
+                <p class="text-primary text-4xl font-black">4</p>
+            </div>
+        </div>
+
+        <!-- Academic Results -->
+        <div id="results" class="flex flex-col gap-6 pt-8 scroll-mt-20">
+            <div class="flex flex-col gap-2">
+                <h3 class="text-primary font-bold uppercase text-sm tracking-widest">Academic Record</h3>
+                <h2 class="text-3xl font-black">Recent Results</h2>
+            </div>
+            <div class="bg-white dark:bg-slate-900 rounded-xl border border-primary/10 shadow-sm overflow-hidden text-left overflow-x-auto">
+                <table class="w-full text-sm min-w-[600px]">
+                    <thead class="bg-slate-50 dark:bg-slate-800/50 border-b border-primary/10">
+                        <tr>
+                            <th class="px-6 py-4 font-semibold text-slate-600 dark:text-slate-300 text-left">Course Code</th>
+                            <th class="px-6 py-4 font-semibold text-slate-600 dark:text-slate-300 text-left">Course Name</th>
+                            <th class="px-6 py-4 font-semibold text-slate-600 dark:text-slate-300 text-left">Credits</th>
+                            <th class="px-6 py-4 font-semibold text-slate-600 dark:text-slate-300 text-left">Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-primary/5 text-slate-700 dark:text-slate-200">
+                        <tr class="hover:bg-primary/[0.02] transition-colors">
+                            <td class="px-6 py-4 font-medium">CS101</td>
+                            <td class="px-6 py-4">Introduction to Computer Science</td>
+                            <td class="px-6 py-4">3</td>
+                            <td class="px-6 py-4 font-bold text-green-600 dark:text-green-400">A</td>
+                        </tr>
+                        <tr class="hover:bg-primary/[0.02] transition-colors">
+                            <td class="px-6 py-4 font-medium">ENG205</td>
+                            <td class="px-6 py-4">Software Engineering Principles</td>
+                            <td class="px-6 py-4">4</td>
+                            <td class="px-6 py-4 font-bold text-green-600 dark:text-green-400">A-</td>
+                        </tr>
+                        <tr class="hover:bg-primary/[0.02] transition-colors">
+                            <td class="px-6 py-4 font-medium">MTH110</td>
+                            <td class="px-6 py-4">Calculus I</td>
+                            <td class="px-6 py-4">4</td>
+                            <td class="px-6 py-4 font-bold text-primary">B+</td>
+                        </tr>
+                        <tr class="hover:bg-primary/[0.02] transition-colors">
+                            <td class="px-6 py-4 font-medium">DIG301</td>
+                            <td class="px-6 py-4">Digital Marketing Essentials</td>
+                            <td class="px-6 py-4">3</td>
+                            <td class="px-6 py-4 font-bold text-green-600 dark:text-green-400">A</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-right">
+                <button class="text-primary font-semibold hover:underline text-sm">Download Official Transcript PDF &rarr;</button>
+            </div>
+        </div>
+
+        <!-- Course Applications -->
+        <div id="courses" class="flex flex-col gap-6 pt-8 pb-12 scroll-mt-20">
+            <div class="flex flex-col gap-2">
+                <h3 class="text-primary font-bold uppercase text-sm tracking-widest">Enrollment</h3>
+                <h2 class="text-3xl font-black">Apply for Other Courses</h2>
+                <p class="text-slate-600 dark:text-slate-400">Expand your skillset by enrolling in these upcoming programmes.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+                <!-- Course Card 1 -->
+                <div class="group flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">data_usage</span>
+                    </div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h4 class="text-xl font-bold">Data Analytics</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Turn data into decisions with skills in statistics, machine learning, and visualisation.</p>
+                        <span class="text-xs font-bold text-primary mt-2">Starts Next Semester</span>
+                    </div>
+                    <button class="mt-4 w-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white py-2 rounded font-semibold hover:bg-primary hover:text-white transition-colors" onclick="alert('Application submitted successfully!');">Apply Now</button>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="group flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">business_center</span>
+                    </div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h4 class="text-xl font-bold">Business Administration</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Develop leadership and strategic management skills for the modern global business environment.</p>
+                        <span class="text-xs font-bold text-primary mt-2">Starts Next Semester</span>
+                    </div>
+                    <button class="mt-4 w-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white py-2 rounded font-semibold hover:bg-primary hover:text-white transition-colors" onclick="alert('Application submitted successfully!');">Apply Now</button>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="group flex flex-col gap-4 rounded-xl border border-primary/10 bg-white dark:bg-slate-900 p-6 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">local_hospital</span>
+                    </div>
+                    <div class="flex flex-col gap-2 flex-grow">
+                        <h4 class="text-xl font-bold">Healthcare Management</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Lead healthcare systems with expertise in clinical and administrative operations.</p>
+                        <span class="text-xs font-bold text-primary mt-2">Waitlist Open</span>
+                    </div>
+                    <button class="mt-4 w-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white py-2 rounded font-semibold hover:bg-primary hover:text-white transition-colors" onclick="alert('You have been added to the waitlist!');">Join Waitlist</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-primary/10 py-8 bg-white dark:bg-background-dark mt-auto border-t-2">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+            <div class="flex items-center gap-2 font-display font-medium text-slate-900 dark:text-slate-100">
+                <div class="w-6 h-6 bg-primary rounded flex items-center justify-center text-white text-[10px] font-bold">FIA</div>
+                Fulfilment International Academy
+            </div>
+            <div>
+                © 2026 Student Portal. All rights reserved.
+            </div>
+            <div class="flex gap-4">
+                <a class="hover:text-primary transition-colors" href="#">Help Center</a>
+                <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Fetch student count & subscribe
+            async function updateCount() {
+                try {
+                    const { count } = await db.from('students').select('*', { count: 'exact', head: true });
+                    const total = count || 0;
+                    const syncEl = document.getElementById('liveSyncIndicator');
+                    if (syncEl) syncEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> ${total} Students Registered`;
+                } catch (err) {
+                    console.error("Failed to load students", err);
+                }
+            }
+
+            await updateCount();
+
+            // Subscribe to real-time changes
+            db.channel('student-dashboard-count')
+                .on('postgres_changes', { event: '*', schema: 'public', table: 'students' }, () => {
+                    updateCount();
+                })
+                .subscribe();
+        });
+    </script>
+</body>
+</html>

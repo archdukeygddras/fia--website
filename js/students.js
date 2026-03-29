@@ -83,6 +83,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       gridWrap.style.display  = '';
       renderGrid(students);
     }
+    
+    const syncIndicator = document.getElementById('liveSyncIndicator');
+    if (syncIndicator) {
+        syncIndicator.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> ${students.length} Students Registered`;
+    }
   }
 
   /* ── HTML escape ── */

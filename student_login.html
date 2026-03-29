@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal | Fulfilment International Academy</title>
+  <meta name="description" content="Sign in to the Fulfilment International Academy student portal to view results and manage courses." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200..800&display=swap" rel="stylesheet" />
+  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300 py-12 px-4 relative min-h-screen flex items-center justify-center">
+  <!-- Decorative background -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-[-1]">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-gold/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="w-full max-w-[440px] flex flex-col items-center">
+    
+    <!-- Brand -->
+    <a href="landing.html" class="flex items-center gap-3 mb-10 hover:opacity-80 transition-opacity">
+      <div class="w-12 h-12 bg-primary rounded flex items-center justify-center text-white shadow-lg shadow-primary/20">
+        <span class="material-symbols-outlined text-2xl">school</span>
+      </div>
+      <div>
+        <div class="font-black text-2xl leading-none">Fulfilment Int'l</div>
+        <div class="text-xs font-bold text-primary tracking-widest uppercase">Student Portal</div>
+      </div>
+    </a>
+
+    <!-- Card -->
+    <div class="w-full bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-primary/10 overflow-hidden flex flex-col">
+      
+      <!-- Tabs -->
+      <div class="flex border-b border-primary/10">
+        <button id="tabSignIn" class="flex-1 py-4 text-center font-bold text-sm border-b-2 border-primary text-primary bg-primary/[0.03] transition-colors">
+          <span class="material-symbols-outlined align-middle text-[18px] mr-1">person</span> Student Sign In
+        </button>
+      </div>
+
+      <div class="p-8">
+        
+        <!-- SIGN IN FORM -->
+        <form id="studentSignInForm" novalidate onsubmit="event.preventDefault(); window.location.href='student_dashboard.html';" class="flex flex-col gap-5">
+          <div>
+            <h3 class="text-2xl font-black mb-1">Welcome back</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm">Sign in to view your results and courses.</p>
+          </div>
+
+          <div>
+            <label for="studentEmail" class="block text-sm font-semibold mb-1">Email / Student ID</label>
+            <input type="text" id="studentEmail" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3" placeholder="E.g. STU-12345" autocomplete="email" required />
+          </div>
+
+          <div>
+             <label for="studentPassword" class="block text-sm font-semibold mb-1">Password</label>
+             <div class="relative">
+               <input type="password" id="studentPassword" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3 pr-10" placeholder="Your password" autocomplete="current-password" required />
+               <button type="button" class="toggle-pw absolute md-right-2 right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors" onclick="const p=document.getElementById('studentPassword'); p.type=p.type==='password'?'text':'password';">
+                 <span class="material-symbols-outlined text-[18px]">visibility</span>
+               </button>
+             </div>
+          </div>
+
+          <button type="submit" id="studentSignInBtn" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors mt-2 text-base shadow-lg shadow-primary/30 flex justify-center items-center gap-2">
+            Access Portal <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </button>
+          
+          <div id="studentSignInError" class="text-red-500 text-sm font-medium mt-1 min-h-[20px]"></div>
+        </form>
+
+      </div>
+
+      <div class="bg-slate-50 dark:bg-slate-800/50 p-4 border-t border-primary/10 text-center text-xs text-slate-500 font-medium">
+        🔒 Secure student access only &nbsp;·&nbsp; FIA © 2026
+      </div>
+    </div>
+
+    <a href="landing.html" class="mt-8 text-sm font-medium text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
+      <span class="material-symbols-outlined text-[16px]">arrow_back</span> Back to Public Site
+    </a>
+  </div>
+
+  <div id="toast-container"></div>
+  
+</body>
+</html>

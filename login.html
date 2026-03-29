@@ -3,259 +3,166 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign In — Fulfilment International Academy</title>
+  <title>Staff Portal | Fulfilment International Academy</title>
   <meta name="description" content="Sign in to the Fulfilment International Academy staff portal to manage student records." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200..800&display=swap" rel="stylesheet" />
+  <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    /* ─── Login Page Extra Styles ─── */
-    .login-page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .login-wrap {
-      width: 100%;
-      max-width: 440px;
-    }
-
-    .login-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 36px;
-      justify-content: center;
-    }
-
-    .login-brand-title {
-      font-family: var(--font-head);
-      font-weight: 800;
-      font-size: 1.05rem;
-      line-height: 1.2;
-    }
-
-    .login-brand-sub {
-      font-size: 0.72rem;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .login-card {
-      background: var(--navy-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .login-tabs {
-      display: flex;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .login-tab {
-      flex: 1;
-      padding: 18px;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .login-tab::after {
-      content: '';
-      position: absolute;
-      bottom: -1px; left: 0; right: 0;
-      height: 2px;
-      background: var(--blue);
-      transform: scaleX(0);
-      transition: var(--transition);
-    }
-
-    .login-tab.active {
-      color: var(--white);
-      background: rgba(79,142,247,0.06);
-    }
-
-    .login-tab.active::after { transform: scaleX(1); }
-
-    .login-body { padding: 36px; }
-
-    .login-title {
-      font-family: var(--font-head);
-      font-size: 1.3rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .login-subtitle {
-      color: var(--text-muted);
-      font-size: 0.87rem;
-      margin-bottom: 28px;
-    }
-
-    .pw-wrap {
-      position: relative;
-    }
-
-    .pw-wrap .form-control { padding-right: 44px; }
-
-    .toggle-pw {
-      position: absolute;
-      right: 12px; top: 50%;
-      transform: translateY(-50%);
-      background: none; border: none;
-      font-size: 1rem; cursor: pointer;
-      color: var(--text-muted);
-      transition: var(--transition);
-    }
-
-    .toggle-pw:hover { color: var(--white); }
-
-    .login-error {
-      font-size: 0.83rem;
-      color: var(--danger);
-      margin-top: 12px;
-      min-height: 20px;
-      line-height: 1.4;
-    }
-
-    .login-footer {
-      padding: 20px 36px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .spinner {
-      display: inline-block;
-      width: 14px; height: 14px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-top-color: var(--white);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-      vertical-align: middle;
-      margin-right: 6px;
-    }
-
-    .form-group-login { margin-bottom: 18px; }
-    .form-group-login:last-of-type { margin-bottom: 8px; }
-  </style>
 </head>
-<body>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-300 py-12 px-4 relative min-h-screen flex items-center justify-center">
+  <!-- Decorative background -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-[-1]">
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gold/10 rounded-full blur-3xl"></div>
+  </div>
 
-  <div class="login-page">
-    <div class="login-wrap">
+  <div class="w-full max-w-[440px] flex flex-col items-center">
+    
+    <!-- Brand -->
+    <a href="landing.html" class="flex items-center gap-3 mb-10 hover:opacity-80 transition-opacity">
+      <div class="w-12 h-12 bg-primary rounded flex items-center justify-center text-white shadow-lg shadow-primary/20">
+        <span class="material-symbols-outlined text-2xl">school</span>
+      </div>
+      <div>
+        <div class="font-black text-2xl leading-none">Fulfilment Int'l</div>
+        <div class="text-xs font-bold text-primary tracking-widest uppercase">Staff Portal</div>
+      </div>
+    </a>
 
-      <!-- Brand -->
-      <div class="login-brand">
-        <div class="nav-logo" style="width:48px;height:48px;font-size:20px">FIA</div>
-        <div>
-          <div class="login-brand-title">Fulfilment Int'l Academy</div>
-          <div class="login-brand-sub">Staff Portal</div>
-        </div>
+    <!-- Card -->
+    <div class="w-full bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-primary/10 overflow-hidden flex flex-col">
+      
+      <!-- Tabs -->
+      <div class="flex border-b border-primary/10">
+        <button id="tabSignIn" class="flex-1 py-4 text-center font-bold text-sm border-b-2 border-primary text-primary bg-primary/[0.03] transition-colors">
+          <span class="material-symbols-outlined align-middle text-[18px] mr-1">shield_person</span> Sign In
+        </button>
+        <button id="tabSignUp" class="flex-1 py-4 text-center font-bold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition-colors">
+          <span class="material-symbols-outlined align-middle text-[18px] mr-1">person_add</span> Create Account
+        </button>
       </div>
 
-      <!-- Card -->
-      <div class="login-card">
-        <!-- Tabs -->
-        <div class="login-tabs">
-          <button class="login-tab active" id="tabSignIn">🔐 Sign In</button>
-          <button class="login-tab" id="tabSignUp">✏️ Create Account</button>
-        </div>
+      <div class="p-8">
+        
+        <!-- SIGN IN FORM -->
+        <form id="signInForm" novalidate class="flex flex-col gap-5">
+          <div>
+            <h3 class="text-2xl font-black mb-1">Welcome back</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm">Sign in to manage student records.</p>
+          </div>
 
-        <div class="login-body">
+          <div>
+            <label for="signInEmail" class="block text-sm font-semibold mb-1">Email Address</label>
+            <input type="email" id="signInEmail" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3" placeholder="you@example.com" autocomplete="email" required />
+          </div>
 
-          <!-- ── SIGN IN FORM ── -->
-          <form id="signInForm" novalidate>
-            <div class="login-title">Welcome back</div>
-            <div class="login-subtitle">Sign in to manage student records.</div>
+          <div>
+             <label for="signInPassword" class="block text-sm font-semibold mb-1">Password</label>
+             <div class="relative">
+               <input type="password" id="signInPassword" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3 pr-10" placeholder="Your password" autocomplete="current-password" required />
+               <button type="button" class="toggle-pw absolute md-right-2 right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors" data-target="signInPassword">
+                 <span class="material-symbols-outlined text-[18px]">visibility</span>
+               </button>
+             </div>
+          </div>
 
-            <div class="form-group form-group-login">
-              <label for="signInEmail">Email Address</label>
-              <input type="email" id="signInEmail" class="form-control" placeholder="you@example.com" autocomplete="email" required />
+          <button type="submit" id="signInBtn" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors mt-2 text-base shadow-lg shadow-primary/30 flex justify-center items-center gap-2">
+            Sign In
+          </button>
+          
+          <div id="signInError" class="text-red-500 text-sm font-medium mt-1 min-h-[20px]"></div>
+        </form>
+
+        <!-- SIGN UP FORM -->
+        <form id="signUpForm" novalidate class="hidden flex-col gap-5">
+           <div>
+            <h3 class="text-2xl font-black mb-1">Create Staff Account</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm">Register as an academy staff member.</p>
+          </div>
+
+          <div>
+            <label for="signUpName" class="block text-sm font-semibold mb-1">Full Name</label>
+            <input type="text" id="signUpName" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3" placeholder="Your full name" required />
+          </div>
+
+          <div>
+            <label for="signUpEmail" class="block text-sm font-semibold mb-1">Email Address</label>
+            <input type="email" id="signUpEmail" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+               <label for="signUpPassword" class="block text-sm font-semibold mb-1">Password</label>
+               <div class="relative">
+                 <input type="password" id="signUpPassword" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3 pr-8" placeholder="Min. 6 chars" required />
+                  <button type="button" class="toggle-pw absolute md-right-2 right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors" data-target="signUpPassword">
+                   <span class="material-symbols-outlined text-[16px]">visibility</span>
+                 </button>
+               </div>
             </div>
-
-            <div class="form-group form-group-login">
-              <label for="signInPassword">Password</label>
-              <div class="pw-wrap">
-                <input type="password" id="signInPassword" class="form-control" placeholder="Your password" autocomplete="current-password" required />
-                <button type="button" class="toggle-pw" data-target="signInPassword">👁️</button>
-              </div>
+             <div>
+               <label for="signUpConfirm" class="block text-sm font-semibold mb-1">Confirm</label>
+               <div class="relative">
+                 <input type="password" id="signUpConfirm" class="w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 focus:border-primary focus:ring-primary text-sm p-3 pr-8" placeholder="Repeat" required />
+                  <button type="button" class="toggle-pw absolute md-right-2 right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors" data-target="signUpConfirm">
+                   <span class="material-symbols-outlined text-[16px]">visibility</span>
+                 </button>
+               </div>
             </div>
+          </div>
 
-            <button type="submit" id="signInBtn" class="btn btn-primary" style="width:100%;margin-top:8px">
-              🔐 Sign In
-            </button>
-            <div class="login-error" id="signInError"></div>
-          </form>
+          <button type="submit" id="signUpBtn" class="w-full bg-gold hover:bg-gold/90 text-slate-900 font-bold py-3 rounded-lg transition-colors mt-2 text-base shadow-lg shadow-gold/30">
+            Create Account
+          </button>
 
-          <!-- ── SIGN UP FORM ── -->
-          <form id="signUpForm" style="display:none" novalidate>
-            <div class="login-title">Create Staff Account</div>
-            <div class="login-subtitle">Register as an academy staff member to access student records.</div>
+          <div id="signUpError" class="text-red-500 text-sm font-medium mt-1 min-h-[20px]"></div>
+        </form>
 
-            <div class="form-group form-group-login">
-              <label for="signUpName">Full Name</label>
-              <input type="text" id="signUpName" class="form-control" placeholder="Your full name" required />
-            </div>
-
-            <div class="form-group form-group-login">
-              <label for="signUpEmail">Email Address</label>
-              <input type="email" id="signUpEmail" class="form-control" placeholder="you@example.com" autocomplete="email" required />
-            </div>
-
-            <div class="form-group form-group-login">
-              <label for="signUpPassword">Password</label>
-              <div class="pw-wrap">
-                <input type="password" id="signUpPassword" class="form-control" placeholder="Min. 6 characters" required />
-                <button type="button" class="toggle-pw" data-target="signUpPassword">👁️</button>
-              </div>
-            </div>
-
-            <div class="form-group form-group-login">
-              <label for="signUpConfirm">Confirm Password</label>
-              <div class="pw-wrap">
-                <input type="password" id="signUpConfirm" class="form-control" placeholder="Repeat password" required />
-                <button type="button" class="toggle-pw" data-target="signUpConfirm">🙈</button>
-              </div>
-            </div>
-
-            <button type="submit" id="signUpBtn" class="btn btn-gold" style="width:100%;margin-top:8px">
-              ✅ Create Account
-            </button>
-            <div class="login-error" id="signUpError"></div>
-          </form>
-
-        </div>
-
-        <div class="login-footer">
-          🔒 Secure staff access only &nbsp;·&nbsp; Fulfilment International Academy © 2026
-        </div>
       </div>
 
-      <p style="text-align:center;margin-top:20px;font-size:0.82rem;color:var(--text-muted)">
-        <a href="landing.html" style="color:var(--blue-light)">← Back to Public Site</a>
-      </p>
+      <div class="bg-slate-50 dark:bg-slate-800/50 p-4 border-t border-primary/10 text-center text-xs text-slate-500 font-medium">
+        🔒 Secure staff access only &nbsp;·&nbsp; FIA © 2026
+      </div>
     </div>
+
+    <a href="landing.html" class="mt-8 text-sm font-medium text-slate-500 hover:text-primary transition-colors flex items-center gap-1">
+      <span class="material-symbols-outlined text-[16px]">arrow_back</span> Back to Public Site
+    </a>
   </div>
 
   <div id="toast-container"></div>
-
-  <!-- Supabase SDK -->
+  
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/app.js"></script>
+  <!-- Basic script to toggle UI since login.js handles auth, but tab switching was handled by old CSS classes -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabSignIn = document.getElementById('tabSignIn');
+      const tabSignUp = document.getElementById('tabSignUp');
+      const formSignIn = document.getElementById('signInForm');
+      const formSignUp = document.getElementById('signUpForm');
+
+      const activeTabClasses = ['border-primary', 'text-primary', 'bg-primary/[0.03]'];
+      const inactiveTabClasses = ['border-transparent', 'text-slate-500'];
+
+      const activateTab = (activeBtn, inactiveBtn, showForm, hideForm) => {
+        activeBtn.classList.remove(...inactiveTabClasses);
+        activeBtn.classList.add(...activeTabClasses);
+        inactiveBtn.classList.remove(...activeTabClasses);
+        inactiveBtn.classList.add(...inactiveTabClasses);
+        
+        showForm.classList.remove('hidden');
+        showForm.classList.add('flex');
+        hideForm.classList.remove('flex');
+        hideForm.classList.add('hidden');
+      };
+
+      tabSignIn.addEventListener('click', () => activateTab(tabSignIn, tabSignUp, formSignIn, formSignUp));
+      tabSignUp.addEventListener('click', () => activateTab(tabSignUp, tabSignIn, formSignUp, formSignIn));
+    });
+  </script>
   <script src="js/login.js"></script>
 </body>
 </html>
